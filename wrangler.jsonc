@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rosarynest",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "rosarynest" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rosarynest",
+      // Placeholder — not a real database. Run `wrangler d1 create rosarynest`
+      // and replace this id before deploying. Local dev works without it.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "rosarynest-media"
+      // Placeholder — run `wrangler r2 bucket create rosarynest-media`
+      // before deploying. Not used in local dev (uploads go to /public).
+    }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL"
+      // Requires `wrangler email sending enable rosarynest.in` on the real
+      // account before this can send. Not usable in this local scaffold —
+      // the contact route degrades gracefully (logs + returns an error)
+      // until the domain is onboarded and this is deployed for real.
+    }
+  ]
+}

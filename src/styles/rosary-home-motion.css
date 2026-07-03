@@ -1,0 +1,94 @@
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+/* Clip-reveal headline lines */
+.line-wrap {
+	display: block;
+	overflow: hidden;
+}
+
+.line-wrap .line {
+	display: block;
+	will-change: transform;
+}
+
+/* Chapter tracker */
+.story-progress {
+	position: fixed;
+	left: 56px;
+	bottom: 36px;
+	z-index: 40;
+	pointer-events: none;
+	font-family: var(--mono);
+	font-size: 10px;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--mute);
+	opacity: 0;
+	transition: opacity 400ms ease;
+}
+
+body.is-motion-ready .story-progress {
+	opacity: 1;
+}
+
+.hero .hero-img .hero-video,
+.hero .hero-img img {
+	will-change: transform;
+}
+
+.cottage-card .img {
+	--rx: 0deg;
+	--ry: 0deg;
+	transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+	transform-style: preserve-3d;
+	transition: transform 0.18s ease-out;
+}
+
+@media (hover: none) {
+	.cottage-card .img {
+		transform: none !important;
+		transition: none;
+	}
+}
+
+@media (max-width: 1024px) {
+	.story-progress {
+		left: 22px;
+		bottom: 24px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.story-progress {
+		display: none;
+	}
+
+	.line-wrap {
+		overflow: visible;
+	}
+
+	.cottage-card .img {
+		transform: none !important;
+		transition: none;
+	}
+}

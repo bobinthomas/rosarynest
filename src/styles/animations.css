@@ -1,0 +1,470 @@
+/* ============================================================
+   Motion system — quiet, weighted, deliberate.
+   One easing curve everywhere. Small distances. No bounce.
+   ============================================================ */
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-enter: 1s;
+  --dur-hover: 350ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* The site now renders a real <main> landmark, which reactivates the theme's
+   own `main { padding-top: 92px }` rule (previously dead — there was no
+   <main> element for it to target). That's correct on every inner page,
+   which needs the clearance. The homepage hero is the one exception: it's
+   full-bleed under the transparent header by design, so it must stay at the
+   very top of <main>. */
+main:has(> .hero) {
+  padding-top: 0;
+}
+
+/* ============ Scroll-entrance reveals ============ */
+/* Applied via data-reveal="heading" | "body" | "image" | "rule" | "eyebrow" | "fade"
+   Toggled to .is-visible by the ScrollReveal controller (IntersectionObserver). */
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+[data-reveal="heading"] {
+  opacity: 0;
+  transform: translateY(30px);
+  letter-spacing: 0.02em;
+  transition: opacity var(--dur-enter) var(--ease-luxury), transform var(--dur-enter) var(--ease-luxury),
+    letter-spacing var(--dur-enter) var(--ease-luxury);
+}
+
+[data-reveal="heading"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  letter-spacing: normal;
+}
+
+[data-reveal="body"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-enter) var(--ease-luxury) 150ms, transform var(--dur-enter) var(--ease-luxury) 150ms;
+}
+
+[data-reveal="body"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal="fade"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-enter) var(--ease-luxury), transform var(--dur-enter) var(--ease-luxury);
+}
+
+[data-reveal="fade"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal="eyebrow"] {
+  opacity: 0;
+  letter-spacing: -0.02em;
+  transition: opacity 700ms var(--ease-luxury), letter-spacing 700ms var(--ease-luxury);
+}
+
+[data-reveal="eyebrow"].is-visible {
+  opacity: 1;
+  letter-spacing: inherit;
+}
+
+[data-reveal="rule"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms var(--ease-luxury);
+}
+
+[data-reveal="rule"].is-visible {
+  transform: scaleX(1);
+}
+
+[data-reveal="image"] {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s var(--ease-luxury);
+}
+
+[data-reveal="image"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+[data-reveal="image"] img,
+[data-reveal="image"] video {
+  transform: scale(1.08);
+  transition: transform 1.2s var(--ease-luxury);
+}
+
+[data-reveal="image"].is-visible img,
+[data-reveal="image"].is-visible video {
+  transform: scale(1);
+}
+
+/* Stagger siblings inside a reveal group — set --reveal-i (inline style) on
+   the repeating wrapper; it inherits down to any [data-reveal] descendant. */
+[data-reveal-group] [data-reveal] {
+  transition-delay: calc(var(--reveal-i, 0) * 110ms);
+}
+
+/* ============ Buttons / CTAs — sweep fill, no scale ============
+   Each variant keeps its own base background/text color; the ::before
+   sweeps in the *hover* fill color from the left, text color flips at
+   the same pace. No background-color transition — the sweep replaces it. */
+.reserve,
+.reserve-desktop,
+.reserve-header,
+.mobile-nav-reserve,
+.booking-link,
+.reserve-form button,
+.contact-form button {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  transition: color var(--dur-hover) var(--ease-luxury) !important;
+}
+
+.reserve::before,
+.reserve-desktop::before,
+.reserve-header::before,
+.mobile-nav-reserve::before,
+.booking-link::before,
+.reserve-form button::before,
+.contact-form button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-hover) var(--ease-luxury);
+}
+
+.reserve:hover::before,
+.reserve-desktop:hover::before,
+.reserve-header:hover::before,
+.mobile-nav-reserve:hover::before,
+.booking-link:hover::before,
+.reserve-form button:hover::before,
+.contact-form button:hover::before {
+  transform: scaleX(1);
+}
+
+/* transparent, bordered reserve buttons: sweep to forest, text to cream */
+.reserve::before,
+.reserve-desktop::before,
+.reserve-header::before,
+.mobile-nav-reserve::before {
+  background: var(--forest);
+}
+
+.reserve:hover,
+.reserve-desktop:hover,
+.reserve-header:hover,
+.mobile-nav-reserve:hover {
+  color: var(--cream) !important;
+  background: transparent !important;
+}
+
+/* copper-filled CTAs (booking link, reserve form submit): sweep to cream, text to forest */
+.booking-link::before,
+.reserve-form button::before {
+  background: var(--cream);
+}
+
+.booking-link:hover,
+.reserve-form button:hover {
+  color: var(--forest) !important;
+  background: var(--copper) !important;
+}
+
+/* forest-filled CTA (contact form submit): sweep to copper, text stays cream */
+.contact-form button::before {
+  background: var(--copper);
+}
+
+.contact-form button:hover {
+  background: var(--forest) !important;
+}
+
+/* ============ Nav links — underline draws in from left ============ */
+.nav-link,
+.mobile-nav-link,
+.quiet-link {
+  position: relative;
+}
+
+.nav-link::after,
+.mobile-nav-link::after,
+.quiet-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms var(--ease-luxury);
+}
+
+.nav-link:hover::after,
+.mobile-nav-link:hover::after,
+.quiet-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* .quiet-link's visible box is only ~20px tall (12px text + underline) — well
+   under the 44px touch-target minimum. Expand the tappable area invisibly
+   via ::before, centered on the link, without changing its visible size,
+   position, or the surrounding layout. */
+.quiet-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: var(--touch-min);
+  transform: translateY(-50%);
+}
+
+/* ============ Image cards — scale-in image, soft overlay ============ */
+.cottage-card .img,
+.exp-card .img-wrap,
+.masonry .tile .img,
+.post .img,
+.featured .img-col .img,
+.cottage .img-col .img,
+.other-cottages .thumb .img {
+  overflow: hidden;
+  position: relative;
+}
+
+.cottage-card .img img,
+.exp-card .img-wrap .img,
+.masonry .tile .img img,
+.post .img img,
+.featured .img-col .img img,
+.cottage .img-col .img img,
+.other-cottages .thumb .img img {
+  transition: transform 600ms var(--ease-luxury);
+}
+
+.cottage-card:hover .img img,
+.exp-card:hover .img-wrap .img,
+.masonry .tile:hover .img img,
+.post:hover .img img,
+.featured:hover .img-col .img img,
+.other-cottages .thumb:hover .img img {
+  transform: scale(1.04);
+}
+
+.cottage-card .img::after,
+.post .img::after,
+.masonry .tile .img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--forest-deep);
+  opacity: 0;
+  transition: opacity 600ms var(--ease-luxury);
+  pointer-events: none;
+}
+
+.cottage-card:hover .img::after,
+.post:hover .img::after,
+.masonry .tile:hover .img::after {
+  opacity: 0.12;
+}
+
+/* ============ Captions — slide up + fade on hover ============ */
+.masonry .tile .cap,
+.cottage-card .info,
+.exp-card .num,
+.exp-card h3,
+.exp-card .blurb {
+  transition: transform 400ms var(--ease-luxury), opacity 400ms var(--ease-luxury);
+}
+
+.masonry .tile .cap {
+  transform: translateY(8px);
+  opacity: 0.85;
+}
+
+.masonry .tile:hover .cap {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============ Focus-visible — keyboard equivalents for every :hover above ============
+   The default browser focus outline already gives baseline visibility; these
+   rules just make sure the bespoke motion (sweep fill, underline draw-in,
+   image scale + overlay, caption slide) also fires for keyboard users, the
+   same way it does on :hover, rather than only being reachable with a mouse. */
+.reserve:focus-visible::before,
+.reserve-desktop:focus-visible::before,
+.reserve-header:focus-visible::before,
+.mobile-nav-reserve:focus-visible::before,
+.booking-link:focus-visible::before,
+.reserve-form button:focus-visible::before,
+.contact-form button:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.reserve:focus-visible,
+.reserve-desktop:focus-visible,
+.reserve-header:focus-visible,
+.mobile-nav-reserve:focus-visible {
+  color: var(--cream) !important;
+  background: transparent !important;
+}
+
+.booking-link:focus-visible,
+.reserve-form button:focus-visible {
+  color: var(--forest) !important;
+  background: var(--copper) !important;
+}
+
+.contact-form button:focus-visible {
+  background: var(--forest) !important;
+}
+
+.nav-link:focus-visible::after,
+.mobile-nav-link:focus-visible::after,
+.quiet-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.cottage-card:focus-visible .img img,
+.exp-card:focus-visible .img-wrap .img,
+.post:focus-visible .img img,
+.other-cottages .thumb:focus-visible .img img,
+.featured:has(a:focus-visible) .img-col .img img,
+.cottage:has(.quiet-link:focus-visible) .img-col .img {
+  transform: scale(1.04);
+}
+
+.cottage-card:focus-visible .img::after,
+.post:focus-visible .img::after {
+  opacity: 0.12;
+}
+
+/* ============ Fixed nav — blur + border fade in past 80px ============ */
+.site-header {
+  transition: background 500ms var(--ease-luxury), border-color 500ms var(--ease-luxury),
+    padding 400ms var(--ease-luxury), backdrop-filter 500ms var(--ease-luxury);
+}
+
+/* ============ Reduced motion — opacity only, no movement ============ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-reveal="heading"],
+  [data-reveal="body"],
+  [data-reveal="fade"],
+  [data-reveal="eyebrow"] {
+    transform: none !important;
+    letter-spacing: inherit !important;
+    clip-path: none !important;
+    transition: opacity 400ms ease !important;
+  }
+
+  [data-reveal="image"] img,
+  [data-reveal="image"] video {
+    transform: none !important;
+    transition: opacity 400ms ease !important;
+  }
+
+  [data-reveal="rule"] {
+    transform: none !important;
+    transition: opacity 400ms ease !important;
+  }
+
+  .hero .line-wrap .line {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .hero .sub,
+  .hero .scroll-cue {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-parallax {
+    transform: none !important;
+  }
+}
+
+/* ============ Hero load-in — headline lines, subhead, scroll cue ============ */
+@keyframes reveal-line {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .hero-content h1 .line-wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.hero .hero-content h1 .line-wrap .line {
+  display: block;
+  animation: reveal-line 1.1s var(--ease-luxury) both;
+}
+
+.hero .hero-content h1 .line-wrap:nth-child(1) .line {
+  animation-delay: 200ms;
+}
+
+.hero .hero-content h1 .line-wrap:nth-child(2) .line {
+  animation-delay: 340ms;
+}
+
+.hero .hero-content .sub {
+  opacity: 0;
+  animation: reveal-fade-up 1s var(--ease-luxury) 620ms both;
+}
+
+.hero .scroll-cue {
+  opacity: 0;
+  animation: reveal-fade-up 1s var(--ease-luxury) 820ms both;
+}
+
+/* The hero image is absolutely positioned inset:0 against .hero. Giving the
+   parallax wrapper a CSS transform makes it a new containing block, so it
+   needs the same inset:0 treatment or its absolutely-positioned child
+   collapses it to 0×0. */
+.hero .hero-parallax {
+  position: absolute;
+  inset: 0;
+  transition: transform 100ms linear;
+  will-change: transform;
+}

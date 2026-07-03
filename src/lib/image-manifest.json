@@ -1,0 +1,320 @@
+{
+  "/images/bamboo-cafe-1.jpg": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/bamboo-cafe-1.webp",
+    "srcset": "/images/bamboo-cafe-1-480w.webp 480w, /images/bamboo-cafe-1-800w.webp 800w, /images/bamboo-cafe-1.webp 1086w"
+  },
+  "/images/bamboo-cafe.png": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/bamboo-cafe.webp",
+    "srcset": "/images/bamboo-cafe-480w.webp 480w, /images/bamboo-cafe-800w.webp 800w, /images/bamboo-cafe.webp 1086w"
+  },
+  "/images/bathroom-view-1.jpg": {
+    "width": 941,
+    "height": 1672,
+    "webp": "/images/bathroom-view-1.webp",
+    "srcset": "/images/bathroom-view-1-480w.webp 480w, /images/bathroom-view-1-800w.webp 800w, /images/bathroom-view-1.webp 941w"
+  },
+  "/images/bedroom-view-3.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/bedroom-view-3.webp",
+    "srcset": "/images/bedroom-view-3-480w.webp 480w, /images/bedroom-view-3-800w.webp 800w, /images/bedroom-view-3-1200w.webp 1200w, /images/bedroom-view-3.webp 1672w"
+  },
+  "/images/bedroom-view2-1-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/bedroom-view2-1-1.webp",
+    "srcset": "/images/bedroom-view2-1-1-480w.webp 480w, /images/bedroom-view2-1-1-800w.webp 800w, /images/bedroom-view2-1-1-1200w.webp 1200w, /images/bedroom-view2-1-1.webp 1672w"
+  },
+  "/images/bedroom-view2-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/bedroom-view2-1.webp",
+    "srcset": "/images/bedroom-view2-1-480w.webp 480w, /images/bedroom-view2-1-800w.webp 800w, /images/bedroom-view2-1-1200w.webp 1200w, /images/bedroom-view2-1.webp 1672w"
+  },
+  "/images/bonfire-rosary-nest.png": {
+    "width": 1023,
+    "height": 1537,
+    "webp": "/images/bonfire-rosary-nest.webp",
+    "srcset": "/images/bonfire-rosary-nest-480w.webp 480w, /images/bonfire-rosary-nest-800w.webp 800w, /images/bonfire-rosary-nest.webp 1023w"
+  },
+  "/images/bonfirre-stargazing.png": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/bonfirre-stargazing.webp",
+    "srcset": "/images/bonfirre-stargazing-480w.webp 480w, /images/bonfirre-stargazing-800w.webp 800w, /images/bonfirre-stargazing-1200w.webp 1200w, /images/bonfirre-stargazing.webp 1672w"
+  },
+  "/images/cafe-view-wide-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cafe-view-wide-1.webp",
+    "srcset": "/images/cafe-view-wide-1-480w.webp 480w, /images/cafe-view-wide-1-800w.webp 800w, /images/cafe-view-wide-1-1200w.webp 1200w, /images/cafe-view-wide-1.webp 1672w"
+  },
+  "/images/cottage-front-view1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cottage-front-view1.webp",
+    "srcset": "/images/cottage-front-view1-480w.webp 480w, /images/cottage-front-view1-800w.webp 800w, /images/cottage-front-view1-1200w.webp 1200w, /images/cottage-front-view1.webp 1672w"
+  },
+  "/images/cottage4-bed-view1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cottage4-bed-view1.webp",
+    "srcset": "/images/cottage4-bed-view1-480w.webp 480w, /images/cottage4-bed-view1-800w.webp 800w, /images/cottage4-bed-view1-1200w.webp 1200w, /images/cottage4-bed-view1.webp 1672w"
+  },
+  "/images/cottage4-bed1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cottage4-bed1.webp",
+    "srcset": "/images/cottage4-bed1-480w.webp 480w, /images/cottage4-bed1-800w.webp 800w, /images/cottage4-bed1-1200w.webp 1200w, /images/cottage4-bed1.webp 1672w"
+  },
+  "/images/cottage4-washroom1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cottage4-washroom1.webp",
+    "srcset": "/images/cottage4-washroom1-480w.webp 480w, /images/cottage4-washroom1-800w.webp 800w, /images/cottage4-washroom1-1200w.webp 1200w, /images/cottage4-washroom1.webp 1672w"
+  },
+  "/images/cottages.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/cottages.webp",
+    "srcset": "/images/cottages-480w.webp 480w, /images/cottages-800w.webp 800w, /images/cottages-1200w.webp 1200w, /images/cottages.webp 1672w"
+  },
+  "/images/dam-sengulam-munnar.png": {
+    "width": 1537,
+    "height": 1023,
+    "webp": "/images/dam-sengulam-munnar.webp",
+    "srcset": "/images/dam-sengulam-munnar-480w.webp 480w, /images/dam-sengulam-munnar-800w.webp 800w, /images/dam-sengulam-munnar-1200w.webp 1200w, /images/dam-sengulam-munnar.webp 1537w"
+  },
+  "/images/dinnerr-at-nest.png": {
+    "width": 941,
+    "height": 1672,
+    "webp": "/images/dinnerr-at-nest.webp",
+    "srcset": "/images/dinnerr-at-nest-480w.webp 480w, /images/dinnerr-at-nest-800w.webp 800w, /images/dinnerr-at-nest.webp 941w"
+  },
+  "/images/forest-trail.png": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/forest-trail.webp",
+    "srcset": "/images/forest-trail-480w.webp 480w, /images/forest-trail-800w.webp 800w, /images/forest-trail-1200w.webp 1200w, /images/forest-trail.webp 1672w"
+  },
+  "/images/garden-view-1-1.jpg": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/garden-view-1-1.webp",
+    "srcset": "/images/garden-view-1-1-480w.webp 480w, /images/garden-view-1-1-800w.webp 800w, /images/garden-view-1-1.webp 1086w"
+  },
+  "/images/garden-view-1.jpg": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/garden-view-1.webp",
+    "srcset": "/images/garden-view-1-480w.webp 480w, /images/garden-view-1-800w.webp 800w, /images/garden-view-1.webp 1086w"
+  },
+  "/images/garden-view-wide-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/garden-view-wide-1.webp",
+    "srcset": "/images/garden-view-wide-1-480w.webp 480w, /images/garden-view-wide-1-800w.webp 800w, /images/garden-view-wide-1-1200w.webp 1200w, /images/garden-view-wide-1.webp 1672w"
+  },
+  "/images/hut-bed-room-1.jpg": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/hut-bed-room-1.webp",
+    "srcset": "/images/hut-bed-room-1-480w.webp 480w, /images/hut-bed-room-1-800w.webp 800w, /images/hut-bed-room-1-1200w.webp 1200w, /images/hut-bed-room-1.webp 1448w"
+  },
+  "/images/hut-bed-room.png": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/hut-bed-room.webp",
+    "srcset": "/images/hut-bed-room-480w.webp 480w, /images/hut-bed-room-800w.webp 800w, /images/hut-bed-room-1200w.webp 1200w, /images/hut-bed-room.webp 1448w"
+  },
+  "/images/hut-main-view-1.jpg": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/hut-main-view-1.webp",
+    "srcset": "/images/hut-main-view-1-480w.webp 480w, /images/hut-main-view-1-800w.webp 800w, /images/hut-main-view-1-1200w.webp 1200w, /images/hut-main-view-1.webp 1448w"
+  },
+  "/images/hut-main-view.png": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/hut-main-view.webp",
+    "srcset": "/images/hut-main-view-480w.webp 480w, /images/hut-main-view-800w.webp 800w, /images/hut-main-view-1200w.webp 1200w, /images/hut-main-view.webp 1448w"
+  },
+  "/images/hut-veranda-view-1.jpg": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/hut-veranda-view-1.webp",
+    "srcset": "/images/hut-veranda-view-1-480w.webp 480w, /images/hut-veranda-view-1-800w.webp 800w, /images/hut-veranda-view-1.webp 1086w"
+  },
+  "/images/hut-veranda-view.png": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/hut-veranda-view.webp",
+    "srcset": "/images/hut-veranda-view-480w.webp 480w, /images/hut-veranda-view-800w.webp 800w, /images/hut-veranda-view.webp 1086w"
+  },
+  "/images/hut-washroom-1.jpg": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/hut-washroom-1.webp",
+    "srcset": "/images/hut-washroom-1-480w.webp 480w, /images/hut-washroom-1-800w.webp 800w, /images/hut-washroom-1.webp 1086w"
+  },
+  "/images/hut-washroom.png": {
+    "width": 1086,
+    "height": 1448,
+    "webp": "/images/hut-washroom.webp",
+    "srcset": "/images/hut-washroom-480w.webp 480w, /images/hut-washroom-800w.webp 800w, /images/hut-washroom.webp 1086w"
+  },
+  "/images/kerala-breakfast-at-rosary-nest.png": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/kerala-breakfast-at-rosary-nest.webp",
+    "srcset": "/images/kerala-breakfast-at-rosary-nest-480w.webp 480w, /images/kerala-breakfast-at-rosary-nest-800w.webp 800w, /images/kerala-breakfast-at-rosary-nest-1200w.webp 1200w, /images/kerala-breakfast-at-rosary-nest.webp 1448w"
+  },
+  "/images/kitchen-stack-1.jpg": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/kitchen-stack-1.webp",
+    "srcset": "/images/kitchen-stack-1-480w.webp 480w, /images/kitchen-stack-1-800w.webp 800w, /images/kitchen-stack-1-1200w.webp 1200w, /images/kitchen-stack-1.webp 1448w"
+  },
+  "/images/logo.png": {
+    "width": 349,
+    "height": 254,
+    "webp": "/images/logo.webp",
+    "srcset": "/images/logo.webp 349w"
+  },
+  "/images/monsoon-rain-munnar.png": {
+    "width": 1536,
+    "height": 1024,
+    "webp": "/images/monsoon-rain-munnar.webp",
+    "srcset": "/images/monsoon-rain-munnar-480w.webp 480w, /images/monsoon-rain-munnar-800w.webp 800w, /images/monsoon-rain-munnar-1200w.webp 1200w, /images/monsoon-rain-munnar.webp 1536w"
+  },
+  "/images/munnar-beauty.jpg": {
+    "width": 1028,
+    "height": 579,
+    "webp": "/images/munnar-beauty.webp",
+    "srcset": "/images/munnar-beauty-480w.webp 480w, /images/munnar-beauty-800w.webp 800w, /images/munnar-beauty.webp 1028w"
+  },
+  "/images/nest-breakfast.png": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/nest-breakfast.webp",
+    "srcset": "/images/nest-breakfast-480w.webp 480w, /images/nest-breakfast-800w.webp 800w, /images/nest-breakfast-1200w.webp 1200w, /images/nest-breakfast.webp 1672w"
+  },
+  "/images/night-at-rosary-nest.png": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/night-at-rosary-nest.webp",
+    "srcset": "/images/night-at-rosary-nest-480w.webp 480w, /images/night-at-rosary-nest-800w.webp 800w, /images/night-at-rosary-nest-1200w.webp 1200w, /images/night-at-rosary-nest.webp 1672w"
+  },
+  "/images/path-view-1.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "/images/path-view-1.webp",
+    "srcset": "/images/path-view-1-480w.webp 480w, /images/path-view-1-800w.webp 800w, /images/path-view-1.webp 1024w"
+  },
+  "/images/path-view-wide-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/path-view-wide-1.webp",
+    "srcset": "/images/path-view-wide-1-480w.webp 480w, /images/path-view-wide-1-800w.webp 800w, /images/path-view-wide-1-1200w.webp 1200w, /images/path-view-wide-1.webp 1672w"
+  },
+  "/images/red-cottage-bathroom-1.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "/images/red-cottage-bathroom-1.webp",
+    "srcset": "/images/red-cottage-bathroom-1-480w.webp 480w, /images/red-cottage-bathroom-1-800w.webp 800w, /images/red-cottage-bathroom-1.webp 1024w"
+  },
+  "/images/red-cottage-bathroomview-1-1.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "/images/red-cottage-bathroomview-1-1.webp",
+    "srcset": "/images/red-cottage-bathroomview-1-1-480w.webp 480w, /images/red-cottage-bathroomview-1-1-800w.webp 800w, /images/red-cottage-bathroomview-1-1.webp 1024w"
+  },
+  "/images/red-cottage-bathroomview-1.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "/images/red-cottage-bathroomview-1.webp",
+    "srcset": "/images/red-cottage-bathroomview-1-480w.webp 480w, /images/red-cottage-bathroomview-1-800w.webp 800w, /images/red-cottage-bathroomview-1.webp 1024w"
+  },
+  "/images/red-cottage-bed-3-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-bed-3-1.webp",
+    "srcset": "/images/red-cottage-bed-3-1-480w.webp 480w, /images/red-cottage-bed-3-1-800w.webp 800w, /images/red-cottage-bed-3-1-1200w.webp 1200w, /images/red-cottage-bed-3-1.webp 1672w"
+  },
+  "/images/red-cottage-bed-3.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-bed-3.webp",
+    "srcset": "/images/red-cottage-bed-3-480w.webp 480w, /images/red-cottage-bed-3-800w.webp 800w, /images/red-cottage-bed-3-1200w.webp 1200w, /images/red-cottage-bed-3.webp 1672w"
+  },
+  "/images/red-cottage-bed2-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-bed2-1.webp",
+    "srcset": "/images/red-cottage-bed2-1-480w.webp 480w, /images/red-cottage-bed2-1-800w.webp 800w, /images/red-cottage-bed2-1-1200w.webp 1200w, /images/red-cottage-bed2-1.webp 1672w"
+  },
+  "/images/red-cottage-bed2view-1-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-bed2view-1-1.webp",
+    "srcset": "/images/red-cottage-bed2view-1-1-480w.webp 480w, /images/red-cottage-bed2view-1-1-800w.webp 800w, /images/red-cottage-bed2view-1-1-1200w.webp 1200w, /images/red-cottage-bed2view-1-1.webp 1672w"
+  },
+  "/images/red-cottage-bed2view-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-bed2view-1.webp",
+    "srcset": "/images/red-cottage-bed2view-1-480w.webp 480w, /images/red-cottage-bed2view-1-800w.webp 800w, /images/red-cottage-bed2view-1-1200w.webp 1200w, /images/red-cottage-bed2view-1.webp 1672w"
+  },
+  "/images/red-cottage-dining-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-dining-1.webp",
+    "srcset": "/images/red-cottage-dining-1-480w.webp 480w, /images/red-cottage-dining-1-800w.webp 800w, /images/red-cottage-dining-1-1200w.webp 1200w, /images/red-cottage-dining-1.webp 1672w"
+  },
+  "/images/red-cottage-entrance-1.jpg": {
+    "width": 1448,
+    "height": 1086,
+    "webp": "/images/red-cottage-entrance-1.webp",
+    "srcset": "/images/red-cottage-entrance-1-480w.webp 480w, /images/red-cottage-entrance-1-800w.webp 800w, /images/red-cottage-entrance-1-1200w.webp 1200w, /images/red-cottage-entrance-1.webp 1448w"
+  },
+  "/images/red-cottage-front-view.png": {
+    "width": 1536,
+    "height": 1024,
+    "webp": "/images/red-cottage-front-view.webp",
+    "srcset": "/images/red-cottage-front-view-480w.webp 480w, /images/red-cottage-front-view-800w.webp 800w, /images/red-cottage-front-view-1200w.webp 1200w, /images/red-cottage-front-view.webp 1536w"
+  },
+  "/images/red-cottage-hall-1.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/red-cottage-hall-1.webp",
+    "srcset": "/images/red-cottage-hall-1-480w.webp 480w, /images/red-cottage-hall-1-800w.webp 800w, /images/red-cottage-hall-1-1200w.webp 1200w, /images/red-cottage-hall-1.webp 1672w"
+  },
+  "/images/tea-munnar-dam.png": {
+    "width": 1208,
+    "height": 1302,
+    "webp": "/images/tea-munnar-dam.webp",
+    "srcset": "/images/tea-munnar-dam-480w.webp 480w, /images/tea-munnar-dam-800w.webp 800w, /images/tea-munnar-dam.webp 1208w"
+  },
+  "/images/tea-plantation.png": {
+    "width": 1527,
+    "height": 1030,
+    "webp": "/images/tea-plantation.webp",
+    "srcset": "/images/tea-plantation-480w.webp 480w, /images/tea-plantation-800w.webp 800w, /images/tea-plantation-1200w.webp 1200w, /images/tea-plantation.webp 1527w"
+  },
+  "/images/veranta-view-3.jpg": {
+    "width": 1672,
+    "height": 941,
+    "webp": "/images/veranta-view-3.webp",
+    "srcset": "/images/veranta-view-3-480w.webp 480w, /images/veranta-view-3-800w.webp 800w, /images/veranta-view-3-1200w.webp 1200w, /images/veranta-view-3.webp 1672w"
+  },
+  "/images/veranta-view2-1.jpg": {
+    "width": 1024,
+    "height": 1536,
+    "webp": "/images/veranta-view2-1.webp",
+    "srcset": "/images/veranta-view2-1-480w.webp 480w, /images/veranta-view2-1-800w.webp 800w, /images/veranta-view2-1.webp 1024w"
+  }
+}
