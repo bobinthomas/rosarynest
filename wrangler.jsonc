@@ -15,9 +15,7 @@
     {
       "binding": "DB",
       "database_name": "rosarynest",
-      // Placeholder — not a real database. Run `wrangler d1 create rosarynest`
-      // and replace this id before deploying. Local dev works without it.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "258dfee0-ea00-481d-837d-73582972ff62",
       "migrations_dir": "drizzle"
     }
   ],
@@ -25,8 +23,6 @@
     {
       "binding": "MEDIA",
       "bucket_name": "rosarynest-media"
-      // Placeholder — run `wrangler r2 bucket create rosarynest-media`
-      // before deploying. Not used in local dev (uploads go to /public).
     }
   ],
   "send_email": [
