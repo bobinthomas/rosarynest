@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCottages, getPosts, getSettings } from "@/lib/content";
 import { HeroParallax } from "@/components/HeroParallax";
 import { SiteImage } from "@/components/SiteImage";
+import { getAltText } from "@/lib/image-alt";
 
 export default async function Home() {
   const [cottages, latestPosts, settings] = await Promise.all([
@@ -150,7 +151,11 @@ export default async function Home() {
               style={{ "--reveal-i": i } as React.CSSProperties}
             >
               <div className="img" data-reveal="image">
-                <SiteImage src={cottage.images[0]} alt={cottage.name} sizes="(max-width: 1024px) 100vw, 25vw" />
+                <SiteImage
+                  src={cottage.images[0]}
+                  alt={getAltText(cottage.images[0], cottage.name)}
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
               </div>
               <div className="info" data-reveal="fade">
                 <div className="name">{cottage.name}</div>

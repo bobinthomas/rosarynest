@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteImage } from "@/components/SiteImage";
 import { getExperiences } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { getAltText } from "@/lib/image-alt";
 
 export const metadata = buildMetadata({
   title: "Experiences — RosaryNest",
@@ -47,7 +48,7 @@ export default async function ExperiencesPage() {
               <SiteImage
                 className="img"
                 src={exp.images[0]}
-                alt={exp.title}
+                alt={getAltText(exp.images[0], exp.title)}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />

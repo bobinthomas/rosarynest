@@ -14,3 +14,11 @@
 .stay-cta h2 {
   font-size: clamp(36px, 4.6vw, 56px);
 }
+
+/* .line-wrap is used for the clip-reveal heading pattern across many
+   sections, but the actual keyframe animation only ever runs on the
+   homepage hero — scope will-change there instead of applying it to every
+   line-wrap heading site-wide for an animation that never fires on them. */
+.hero .hero-content h1 .line-wrap .line {
+  will-change: transform;
+}

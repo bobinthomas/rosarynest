@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { SiteImage } from "@/components/SiteImage";
 import { getCottages } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { getAltText } from "@/lib/image-alt";
 
 export const metadata = buildMetadata({
   title: "Cottages — RosaryNest",
@@ -30,7 +31,7 @@ export default async function CottagesPage() {
               <div className="img" data-reveal="image">
                 <SiteImage
                   src={cottage.images[0]}
-                  alt={cottage.name}
+                  alt={getAltText(cottage.images[0], cottage.name)}
                   priority={i === 0}
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />

@@ -6,6 +6,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { getCottageBySlug, getCottages } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
+import { getAltText } from "@/lib/image-alt";
 
 export async function generateMetadata({
   params,
@@ -51,7 +52,7 @@ export default async function CottageDetailPage({
       <StructuredData data={breadcrumb} />
       <section className="cottage-hero">
         <div className="img" data-reveal="image">
-          <SiteImage src={cottage.images[0]} alt={cottage.name} priority />
+          <SiteImage src={cottage.images[0]} alt={getAltText(cottage.images[0], cottage.name)} priority />
         </div>
         <div className="meta-row">
           <div>
@@ -118,7 +119,7 @@ export default async function CottageDetailPage({
             {others.map((c, i) => (
               <Link className="thumb" href={`/cottages/${c.slug}`} key={c.slug} style={{ "--reveal-i": i } as React.CSSProperties}>
                 <div className="img" data-reveal="image">
-                  <SiteImage src={c.images[0]} alt={c.name} sizes="(max-width: 1024px) 50vw, 33vw" />
+                  <SiteImage src={c.images[0]} alt={getAltText(c.images[0], c.name)} sizes="(max-width: 1024px) 50vw, 33vw" />
                 </div>
                 <div className="name" data-reveal="fade">{c.name}</div>
               </Link>

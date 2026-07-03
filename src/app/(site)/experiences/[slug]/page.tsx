@@ -6,6 +6,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { getExperienceBySlug, getExperiences } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
+import { getAltText } from "@/lib/image-alt";
 
 export async function generateMetadata({
   params,
@@ -50,7 +51,7 @@ export default async function ExperienceDetailPage({
       <StructuredData data={breadcrumb} />
       <section className="cottage-hero">
         <div className="img" data-reveal="image">
-          <SiteImage src={experience.images[0]} alt={experience.title} priority />
+          <SiteImage src={experience.images[0]} alt={getAltText(experience.images[0], experience.title)} priority />
         </div>
         <div className="meta-row">
           <div>
@@ -113,7 +114,7 @@ export default async function ExperienceDetailPage({
             {others.map((e, i) => (
               <Link className="thumb" href={`/experiences/${e.slug}`} key={e.slug} style={{ "--reveal-i": i } as React.CSSProperties}>
                 <div className="img" data-reveal="image">
-                  <SiteImage src={e.images[0]} alt={e.title} sizes="(max-width: 1024px) 50vw, 33vw" />
+                  <SiteImage src={e.images[0]} alt={getAltText(e.images[0], e.title)} sizes="(max-width: 1024px) 50vw, 33vw" />
                 </div>
                 <div className="name" data-reveal="fade">{e.title}</div>
               </Link>
