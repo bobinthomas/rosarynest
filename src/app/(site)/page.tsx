@@ -17,7 +17,6 @@ export default async function Home() {
 
   return (
     <>
-      {!useHeroImage ? <link rel="preload" as="video" href={heroVideoSrc} /> : null}
       <section className="hero scene" data-chapter="01 · Arrival">
         <HeroParallax>
           <div className={`hero-img ${useHeroImage ? "has-image" : "has-video"}`}>

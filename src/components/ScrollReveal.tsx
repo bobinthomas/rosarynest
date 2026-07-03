@@ -10,6 +10,20 @@ import { usePathname } from "next/navigation";
  * swapping tiles in and out) — and reveals each one the first time it's
  * 20% visible, then stops watching it.
  */
+const REVEAL_THRESHOLD = 0.2;
+
+// Some browser/extension configurations silently prevent IntersectionObserver
+// from ever reporting real intersections (no error, it just never fires).
+// This mirrors the same threshold using plain geometry so reveals still
+// happen when that native API misbehaves.
+function isSufficientlyVisible(el: Element): boolean {
+  const rect = el.getBoundingClientRect();
+  if (rect.height <= 0) return false;
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+  return visibleHeight / rect.height >= REVEAL_THRESHOLD;
+}
+
 export function ScrollReveal() {
   const pathname = usePathname();
 
@@ -33,7 +47,7 @@ export function ScrollReveal() {
           }
         }
       },
-      { threshold: 0.2 }
+      { threshold: REVEAL_THRESHOLD }
     );
 
     function observeNew(root: Document | Element) {
@@ -41,6 +55,26 @@ export function ScrollReveal() {
     }
 
     observeNew(document);
+
+    let ticking = false;
+    function checkFallback() {
+      ticking = false;
+      document.querySelectorAll("[data-reveal]:not(.is-visible)").forEach((el) => {
+        if (isSufficientlyVisible(el)) {
+          el.classList.add("is-visible");
+          observer.unobserve(el);
+        }
+      });
+    }
+    function onScrollOrResize() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkFallback);
+      }
+    }
+    checkFallback();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
 
     const mutationObserver = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -53,12 +87,15 @@ export function ScrollReveal() {
           }
         });
       }
+      checkFallback();
     });
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       observer.disconnect();
       mutationObserver.disconnect();
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
     };
   }, [pathname]);
 
