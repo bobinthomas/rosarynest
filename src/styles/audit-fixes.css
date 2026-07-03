@@ -1,0 +1,16 @@
+/* ============================================================
+   Technical audit fixes that aren't part of the motion system —
+   kept separate from animations.css so the two concerns don't blur.
+   ============================================================ */
+
+/* Both headings were fixed px sizes while nearly every other heading on the
+   site uses clamp() for fluid scaling. Desktop max value is unchanged from
+   the original (52px / 56px) — this only adds proper scaling down to mobile
+   widths instead of a hard cutoff. */
+.cottage h2 {
+  font-size: clamp(32px, 4.4vw, 52px);
+}
+
+.stay-cta h2 {
+  font-size: clamp(36px, 4.6vw, 56px);
+}

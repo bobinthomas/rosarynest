@@ -28,7 +28,11 @@ main:has(> .hero) {
 /* Applied via data-reveal="heading" | "body" | "image" | "rule" | "eyebrow" | "fade"
    Toggled to .is-visible by the ScrollReveal controller (IntersectionObserver). */
 
-[data-reveal] {
+/* Only hint while the element is actually about to animate. Once it's
+   revealed it's permanently static, so dropping will-change afterward lets
+   the browser release the compositor layer instead of holding one open for
+   every reveal element on the page indefinitely. */
+[data-reveal]:not(.is-visible) {
   will-change: transform, opacity;
 }
 
@@ -358,10 +362,16 @@ main:has(> .hero) {
   opacity: 0.12;
 }
 
-/* ============ Fixed nav — blur + border fade in past 80px ============ */
+/* ============ Fixed nav — blur + border fade in past 80px ============
+   `padding` is deliberately left out of this transition: animating it
+   triggers layout reflow on every frame, unlike background/border-color/
+   backdrop-filter which are paint/composite only. The 6px padding change
+   between states still happens, just as an instant snap rather than an
+   animated one — visually negligible, and it removes the one non-transform/
+   opacity/clip-path property this system was animating. */
 .site-header {
   transition: background 500ms var(--ease-luxury), border-color 500ms var(--ease-luxury),
-    padding 400ms var(--ease-luxury), backdrop-filter 500ms var(--ease-luxury);
+    backdrop-filter 500ms var(--ease-luxury);
 }
 
 /* ============ Reduced motion — opacity only, no movement ============ */
