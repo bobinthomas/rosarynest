@@ -18,7 +18,7 @@ export async function Footer() {
             <li><Link href="/the-land">The Land</Link></li>
             <li><Link href="/cottages">Cottages</Link></li>
             <li><Link href="/experiences">Experiences</Link></li>
-            <li><Link href="/the-family">The Family</Link></li>
+            <li><Link href="/about">About Us</Link></li>
             <li><Link href="/journal">Journal</Link></li>
             <li><Link href="/gallery">Gallery</Link></li>
           </ul>

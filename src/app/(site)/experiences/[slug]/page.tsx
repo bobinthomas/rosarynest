@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
+import { DetailGallery } from "@/components/DetailGallery";
 import { StructuredData } from "@/components/StructuredData";
 import { getExperienceBySlug, getExperiences } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -35,7 +36,6 @@ export default async function ExperienceDetailPage({
   if (!experience) notFound();
 
   const others = (await getExperiences()).filter((e) => e.slug !== slug).slice(0, 3);
-  const gridPositions = ["g1", "g2", "g3", "g4"];
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -72,17 +72,7 @@ export default async function ExperienceDetailPage({
         <p data-reveal="body">{experience.content}</p>
       </div>
 
-      {experience.images.length > 1 ? (
-        <div className="gallery" data-reveal-group>
-          {experience.images.slice(1).map((img, i) => (
-            <div className={gridPositions[i] ?? "g4"} key={img}>
-              <div className="img" data-reveal="image" style={{ "--reveal-i": i } as React.CSSProperties}>
-                <SiteImage src={img} alt={`${experience.title} — view ${i + 2}`} sizes="(max-width: 1024px) 100vw, 50vw" />
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : null}
+      <DetailGallery images={experience.images} title={experience.title} />
 
       <section className="cottage">
         <div className="inner">
@@ -98,7 +88,7 @@ export default async function ExperienceDetailPage({
                 </div>
               ))}
             </div>
-            <div className="booking">
+            <div className="book-cta">
               <Link className="booking-link" href="/book">Check availability</Link>
             </div>
           </div>

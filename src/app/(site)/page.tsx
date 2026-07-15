@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { getCottages, getPosts, getSettings } from "@/lib/content";
+import { getCottages, getExperiences, getPosts, getSettings } from "@/lib/content";
 import { HeroParallax } from "@/components/HeroParallax";
 import { SiteImage } from "@/components/SiteImage";
 import { getAltText } from "@/lib/image-alt";
 
 export default async function Home() {
-  const [cottages, latestPosts, settings] = await Promise.all([
+  const [cottages, experiences, latestPosts, settings] = await Promise.all([
     getCottages(),
+    getExperiences(),
     getPosts(2),
     getSettings(),
   ]);
@@ -36,7 +37,7 @@ export default async function Home() {
         </div>
         <div className="corner corner-r">
           Established {settings.established_year}<br />
-          Seven cottages
+          Four cottages
         </div>
 
         <div className="hero-content">
@@ -48,7 +49,7 @@ export default async function Home() {
               <span className="line"><em>the hills of Munnar.</em></span>
             </span>
           </h1>
-          <p className="sub">Seven cottages, two pools, a forest, and a lake — tucked away from the town.</p>
+          <p className="sub">Four cottages, a forest, and a lake — tucked away from the town.</p>
         </div>
 
         <div className="scroll-cue">
@@ -61,8 +62,8 @@ export default async function Home() {
         <div className="container-narrow intro-pin">
           <div className="kicker" data-reveal="eyebrow">An introduction</div>
           <p data-reveal="body">
-            Rosary Nest is a small family-run retreat in the hills above Munnar, where forest meets
-            valley meets water. Built by a family that has lived on this land for two generations, it
+            RosaryNest is a small family-run retreat in the hills above Munnar, where forest meets
+            valley meets water. Built by a family that has farmed this land for three generations, it
             is a place to slow down — not to tick things off a list.
           </p>
           <div className="est" data-reveal="fade">est. {settings.established_year} · vellathooval · kerala</div>
@@ -83,7 +84,7 @@ export default async function Home() {
             <div className="num" data-reveal="eyebrow">i.</div>
             <h3 data-reveal="heading">The Land</h3>
             <p data-reveal="body">
-              A south-facing fold of forest above the Periyar valley, with a lake at its foot and a dam
+              A south-facing fold of forest above the valley below, with a lake at its foot and a dam
               beyond. The town is twenty minutes the other way; here, no one is hurrying anywhere.
             </p>
             <Link className="quiet-link" href="/the-land">Walk the property →</Link>
@@ -100,8 +101,9 @@ export default async function Home() {
             <div className="num" data-reveal="eyebrow">ii.</div>
             <h3 data-reveal="heading">The Cottages</h3>
             <p data-reveal="body">
-              Four cottages in four shapes — Forest, Lake, Family, Garden. Each has a fireplace, a deep
-              tub, a long window, and no television. Beds are dressed in linen; mornings begin with tea.
+              Four cottages — Tarry, Scarlet, Sparrow, and Eyrie — each named for what it feels like to
+              stay there. Long windows, warm beds, no televisions; some keep a fireplace for the cold
+              months. Beds are dressed in linen; mornings begin with tea.
             </p>
             <Link className="quiet-link" href="/cottages">See the cottages →</Link>
           </div>
@@ -169,7 +171,77 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="journal scene" data-chapter="05 · Journal">
+      <section className="experiences-home scene" data-chapter="05 · Experiences">
+        <div className="head">
+          <div className="left">
+            <div className="eyebrow kicker u-color-copper" data-reveal="eyebrow">Nothing Scheduled</div>
+            <h2 data-reveal="heading">
+              <span className="line-wrap"><span className="line">Ways to spend <em>a slow day.</em></span></span>
+            </h2>
+          </div>
+          <div className="right" data-reveal="body">Nothing is booked in advance. Ask at breakfast and it happens that evening.</div>
+        </div>
+
+        <div className="experience-grid" data-reveal-group>
+          {experiences.slice(0, 5).map((exp, i) => (
+            <Link
+              key={exp.slug}
+              className={`experience-card e-0${i + 1}`}
+              href={`/experiences/${exp.slug}`}
+              style={{ "--reveal-i": i } as React.CSSProperties}
+            >
+              <div className="img" data-reveal="image">
+                <SiteImage
+                  src={exp.images[0]}
+                  alt={getAltText(exp.images[0], exp.title)}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="info" data-reveal="fade">
+                <span className="num">{String(i + 1).padStart(2, "0")}.</span>
+                <h3>{exp.title}</h3>
+                <p className="blurb">{exp.summary}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="footer-link">
+          <Link className="quiet-link" href="/experiences">Read the daybook →</Link>
+        </div>
+      </section>
+
+      <section className="reserve-block scene" id="reserve" data-chapter="06 · Reserve">
+        <div className="inner">
+          <div className="kicker eyebrow" data-reveal="eyebrow">Plan your stay</div>
+          <h2 data-reveal="heading">
+            <span className="line-wrap"><span className="line">Come for <em>as long as you like.</em></span></span>
+            <span className="line-wrap"><span className="line">The place takes a day to soften.</span></span>
+          </h2>
+
+          <form className="reserve-form" action="/book" method="get" data-reveal="fade">
+            <div className="field">
+              <label>Arrival</label>
+              <input type="text" name="arrival" placeholder="Thu, 14 May" />
+            </div>
+            <div className="field">
+              <label>Departure</label>
+              <input type="text" name="departure" placeholder="Sun, 17 May" />
+            </div>
+            <div className="field">
+              <label>Guests</label>
+              <input type="text" name="guests" placeholder="2 adults" />
+            </div>
+            <button type="submit">Check availability</button>
+          </form>
+
+          <div className="aside">
+            or call us at <a href={`tel:${settings.phone}`}>{settings.phone}</a> — we answer personally.
+          </div>
+        </div>
+      </section>
+
+      <section className="journal scene" data-chapter="07 · Journal">
         <div className="head">
           <div>
             <div className="eyebrow u-mb-18" data-reveal="eyebrow">The Journal</div>
@@ -199,36 +271,6 @@ export default async function Home() {
               <h3 data-reveal="fade">{post.title}</h3>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="reserve-block scene" id="reserve" data-chapter="06 · Reserve">
-        <div className="inner">
-          <div className="kicker eyebrow" data-reveal="eyebrow">Plan your stay</div>
-          <h2 data-reveal="heading">
-            <span className="line-wrap"><span className="line">Three nights, <em>at least.</em></span></span>
-            <span className="line-wrap"><span className="line">The place takes a day to soften.</span></span>
-          </h2>
-
-          <form className="reserve-form" action="/book" method="get" data-reveal="fade">
-            <div className="field">
-              <label>Arrival</label>
-              <input type="text" name="arrival" placeholder="Thu, 14 May" />
-            </div>
-            <div className="field">
-              <label>Departure</label>
-              <input type="text" name="departure" placeholder="Sun, 17 May" />
-            </div>
-            <div className="field">
-              <label>Guests</label>
-              <input type="text" name="guests" placeholder="2 adults" />
-            </div>
-            <button type="submit">Check availability</button>
-          </form>
-
-          <div className="aside">
-            or call us at <a href={`tel:${settings.phone}`}>{settings.phone}</a> — we answer personally.
-          </div>
         </div>
       </section>
     </>

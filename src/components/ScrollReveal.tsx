@@ -47,7 +47,11 @@ export function ScrollReveal() {
           }
         }
       },
-      { threshold: REVEAL_THRESHOLD }
+      // Negative bottom margin still requires real scroll progress (no
+      // revealing everything on load), but starts the fade in before the
+      // element is fully 20% into the viewport, so content doesn't sit
+      // fully blank for a beat while the user is already scrolling toward it.
+      { threshold: REVEAL_THRESHOLD, rootMargin: "0px 0px -10% 0px" }
     );
 
     function observeNew(root: Document | Element) {

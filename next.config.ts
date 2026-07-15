@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: "/the-family", destination: "/about", permanent: true },
+      { source: "/cottages/the-garden-cottage", destination: "/cottages/tarry-cottage", permanent: true },
+      { source: "/cottages/the-lake-cottage", destination: "/cottages/sparrow-hut", permanent: true },
+      { source: "/cottages/the-family-cottage", destination: "/cottages/scarlet-hut", permanent: true },
+      { source: "/cottages/cottage-1", destination: "/cottages/eyrie-cottage", permanent: true },
+    ];
+  },
   async headers() {
     // Filenames here aren't content-hashed (unlike /_next/static, which Next
     // already caches aggressively on its own), so this stops short of

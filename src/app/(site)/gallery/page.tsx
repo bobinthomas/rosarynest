@@ -17,9 +17,9 @@ export default async function GalleryPage() {
     <>
       <PageHero
         kicker="Gallery"
-        title="A walk through Rosary Nest,"
+        title="A walk through RosaryNest,"
         emphasis="in pictures."
-        subhead="Photographed over a year by our cousin Maya, who works mostly in available light, and waits."
+        subhead="Photographed over a year by the family, who work mostly in available light, and wait."
       />
       <GalleryGrid items={items} />
     </>

@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "The Land — RosaryNest",
   description:
-    "Twelve acres of high-elevation forest above the Periyar valley, with a lake at its foot — the setting behind RosaryNest in Munnar.",
+    "Three acres of high-elevation forest above the valley below, with a lake at its foot — the setting behind RosaryNest in Munnar.",
   path: "/the-land",
   image: "/images/munnar-beauty.jpg",
 });
@@ -42,8 +42,8 @@ export default function TheLandPage() {
       <section className="two-col">
         <h2 className="section-title" data-reveal="heading">II. <span>The forest, and what the valley does to the light</span></h2>
         <p data-reveal="body">
-          Rosary Nest sits on twelve acres of high-elevation evergreen forest, at 1,650 metres above
-          the Periyar valley. The trees here are older than the resort by a wide margin — silver oak,
+          RosaryNest sits on three acres of high-elevation evergreen forest, at 1,650 metres above
+          the valley below. The trees here are older than the resort by a wide margin — silver oak,
           jamun, wild jackfruit, with cardamom growing in the understorey because the family has always
           grown cardamom. None of it was planted for effect. The cottages went up between the trees
           that were already there.
@@ -69,8 +69,8 @@ export default function TheLandPage() {
       </section>
 
       <section className="pull-quote">
-        <blockquote data-reveal="fade"><p>&#8220;Most resorts in Munnar are in the town. We are not in the town.&#8221;</p></blockquote>
-        <div className="attr" data-reveal="fade">— Verbatim, every guest call, since 1998</div>
+        <blockquote data-reveal="fade"><p>&#8220;We came for two nights and kept finding reasons to stay a third. Nowhere else on the trip felt like it belonged to the hill rather than to the tourist season.&#8221;</p></blockquote>
+        <div className="attr" data-reveal="fade">— A guest, writing to us after checkout</div>
       </section>
 
       <section className="lake-section">
@@ -93,7 +93,7 @@ export default function TheLandPage() {
             twenty minutes after most people have stopped paying attention.
           </p>
         </div>
-        <div className="gallery" data-reveal-group>
+        <div className="lake-gallery" data-reveal-group>
           <div className="img g-1" data-reveal="image" style={{ "--reveal-i": 0 } as React.CSSProperties}>
             <SiteImage src="/images/dam-sengulam-munnar.png" alt="Lake from lower terrace, dawn" sizes="(max-width: 1024px) 100vw, 50vw" />
           </div>
@@ -109,16 +109,16 @@ export default function TheLandPage() {
       <section className="seasons" data-reveal-group>
         <h3 data-reveal="heading">IV. The Calendar</h3>
         <div className="title" data-reveal="eyebrow">What changes, <em>and what stays.</em></div>
-        <p data-reveal="fade" style={{ "--reveal-i": 0 } as React.CSSProperties}><span className="lead">In January</span> the mornings are cold enough that the fireplaces
-          in the cottages earn their keep. Cardamom is being harvested; the kitchen smells of it from
+        <p data-reveal="fade" style={{ "--reveal-i": 0 } as React.CSSProperties}><span className="lead">In January</span> the mornings are cold enough that a fireplace
+          earns its keep, in the cottages that have one. Cardamom is being harvested; the kitchen smells of it from
           a long way off. Bring a jumper for after sunset.</p>
         <p data-reveal="fade" style={{ "--reveal-i": 1 } as React.CSSProperties}><span className="lead">In April and May</span> the heat doesn&#39;t arrive the way it does
           in the plains, but the afternoons get long and the mist settles and lifts earlier. The mango
           is in fruit, briefly. The lake is at its lowest.</p>
         <p data-reveal="fade" style={{ "--reveal-i": 2 } as React.CSSProperties}><span className="lead">From June through August</span> the monsoon takes over the
-          property. We close, mostly; the rain comes sideways for weeks at a stretch, and the land
-          flowers, mushrooms, frogs the size of teacups. This is the time we recommend to almost no
-          one and that the few who ask for it never forget.</p>
+          property. We stay open; the cottages fill more slowly, the rain comes sideways for weeks at a
+          stretch, and the land flowers, mushrooms, frogs the size of teacups. This is the season we
+          recommend to almost no one and that the few who ask for it never forget.</p>
         <p data-reveal="fade" style={{ "--reveal-i": 3 } as React.CSSProperties}><span className="lead">By October</span> the rain has gone, the green has stayed, and the
           property is at its most generous. It is the easiest time to come, and the hardest time to
           get a room.</p>
@@ -136,11 +136,11 @@ export default function TheLandPage() {
             </p>
             <ul className="distances" data-reveal="fade">
               <li><div className="place">Munnar town</div><div className="km">18 km</div><div className="by">~ 25 min · car</div></li>
-              <li><div className="place">Mattupetty Dam <em>— our valley</em></div><div className="km">6 km</div><div className="by">~ 12 min · car</div></li>
+              <li><div className="place">Sengulam Dam <em>— our lake</em></div><div className="km">under 1 km</div><div className="by">a short walk</div></li>
               <li><div className="place">Tea Museum</div><div className="km">21 km</div><div className="by">~ 35 min · car</div></li>
               <li><div className="place">Top Station</div><div className="km">42 km</div><div className="by">~ 90 min · car</div></li>
               <li><div className="place">Eravikulam Park</div><div className="km">32 km</div><div className="by">~ 70 min · car</div></li>
-              <li><div className="place">Cochin Airport <em>(COK)</em></div><div className="km">126 km</div><div className="by">~ 4 hrs · car</div></li>
+              <li><div className="place">Cochin Airport <em>(COK)</em></div><div className="km">130 km</div><div className="by">~ 4 hrs · car</div></li>
             </ul>
           </div>
           <div className="map-art" data-reveal="image">
@@ -156,11 +156,11 @@ export default function TheLandPage() {
               <g transform="translate(165 305)">
                 <circle r="6" fill="#A8674A" />
                 <circle r="11" fill="none" stroke="#A8674A" strokeWidth="0.7" />
-                <text y="-26" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontSize="13" fontStyle="italic" fill="#2D3F2F">Rosary Nest</text>
+                <text y="-26" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontSize="13" fontStyle="italic" fill="#2D3F2F">RosaryNest</text>
               </g>
               <g transform="translate(390 50)">
                 <circle r="3" fill="#2D3F2F" />
-                <text y="-8" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="1.5" fill="#1F1F1F">MUNNAR</text>
+                <text y="-8" textAnchor="middle" fontFamily="Google Sans, sans-serif" fontSize="9" letterSpacing="1.5" fill="#1F1F1F">MUNNAR</text>
               </g>
               <text x="175" y="338" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontStyle="italic" fontSize="12" fill="#2D3F2F">the lake</text>
             </svg>

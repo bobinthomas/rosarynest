@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
+import { DetailGallery } from "@/components/DetailGallery";
 import { StructuredData } from "@/components/StructuredData";
 import { getCottageBySlug, getCottages } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -19,7 +20,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: `${cottage.name} — RosaryNest`,
-    description: `${cottage.tagline} ${cottage.capacitySummary}, ${cottage.areaSqm} m² — one of four cottages at RosaryNest in Munnar.`,
+    description: `${cottage.tagline} ${cottage.capacitySummary} — one of four cottages at RosaryNest in Munnar.`,
     path: `/cottages/${cottage.slug}`,
     image: cottage.images[0],
   });
@@ -36,7 +37,6 @@ export default async function CottageDetailPage({
   if (!cottage) notFound();
 
   const others = allCottages.filter((c) => c.slug !== slug).slice(0, 3);
-  const gridPositions = ["g1", "g2", "g3", "g4"];
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -64,9 +64,6 @@ export default async function CottageDetailPage({
           <div className="spec" data-reveal="fade">
             <span>Capacity</span>
             {cottage.capacitySummary}
-            <br />
-            <span>Area</span>
-            {cottage.areaSqm} m²
           </div>
         </div>
       </section>
@@ -75,17 +72,7 @@ export default async function CottageDetailPage({
         <p data-reveal="body">{cottage.description}</p>
       </div>
 
-      {cottage.images.length > 1 ? (
-        <div className="gallery" data-reveal-group>
-          {cottage.images.slice(1, 5).map((img, i) => (
-            <div className={gridPositions[i] ?? "g4"} key={img}>
-              <div className="img" data-reveal="image" style={{ "--reveal-i": i } as React.CSSProperties}>
-                <SiteImage src={img} alt={`${cottage.name} — view ${i + 2}`} sizes="(max-width: 1024px) 100vw, 50vw" />
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : null}
+      <DetailGallery images={cottage.images} title={cottage.name} />
 
       <section className="cottage">
         <div className="inner">
@@ -101,7 +88,7 @@ export default async function CottageDetailPage({
                 </div>
               ))}
             </div>
-            <div className="booking">
+            <div className="book-cta">
               <Link className="booking-link" href={`/book?cottage=${cottage.slug}`}>
                 Check availability
               </Link>

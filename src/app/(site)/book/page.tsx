@@ -74,9 +74,8 @@ export default async function BookPage({
           <h4 data-reveal="heading">iii. Cancellation, briefly</h4>
           <div className="title" data-reveal="eyebrow">Plain English, <em>no fine print.</em></div>
           <p data-reveal="body">
-            Cancel up to 21 days before arrival for a full refund. Within 21 days, we hold 50% as a
-            future-stay credit. We&#39;re flexible in genuine cases — write to us, we&#39;d rather
-            talk it through than apply a rule.
+            Write to us at <a href="mailto:stay@rosarynest.in">stay@rosarynest.in</a> and we&#39;ll walk
+            you through booking and cancellation.
           </p>
         </div>
       </section>

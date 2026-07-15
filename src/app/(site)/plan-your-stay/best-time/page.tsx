@@ -12,7 +12,7 @@ const seasons = [
   {
     title: "December to February",
     subtitle: "Cold mornings, clear skies.",
-    body: "The mornings are cold enough that the fireplaces earn their keep. Cardamom is being harvested; the kitchen smells of it from a long way off. The light is hard and clean and the valley is visible to the horizon. Bring a jumper for after sunset.",
+    body: "The mornings are cold enough that a fireplace earns its keep, in the cottages that have one. Cardamom is being harvested; the kitchen smells of it from a long way off. The light is hard and clean and the valley is visible to the horizon. Bring a jumper for after sunset.",
   },
   {
     title: "March to May",
@@ -40,17 +40,14 @@ export default function BestTimePage() {
         <p className="subhead" data-reveal="body">There isn&#39;t really a wrong time — only a different one.</p>
       </section>
 
-      <section className="two-col" data-reveal-group>
+      <section className="season-list" data-reveal-group>
         {seasons.map((s, i) => (
-          <div key={s.title} style={{ marginBottom: 48, "--reveal-i": i } as React.CSSProperties}>
-            <h2 className="section-title" data-reveal="heading"><span>{s.title}</span></h2>
-            <p
-              data-reveal="eyebrow"
-              style={{ fontFamily: "var(--serif)", fontStyle: "italic", color: "var(--ink-soft)", marginBottom: 8 }}
-            >
-              {s.subtitle}
-            </p>
-            <p data-reveal="body">{s.body}</p>
+          <div className="season" key={s.title} style={{ "--reveal-i": i } as React.CSSProperties}>
+            <div className="season-label" data-reveal="eyebrow">{s.title}</div>
+            <div className="season-body">
+              <p className="season-subtitle" data-reveal="heading">{s.subtitle}</p>
+              <p data-reveal="body">{s.body}</p>
+            </div>
           </div>
         ))}
       </section>

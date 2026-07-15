@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -8,12 +9,15 @@ export const metadata = buildMetadata({
   path: "/plan-your-stay/how-to-reach",
 });
 
-export default function HowToReachPage() {
+export default async function HowToReachPage() {
+  const settings = await getSettings();
+  const mapSrc = `https://maps.google.com/maps?q=${settings.latitude},${settings.longitude}&z=15&output=embed`;
+
   return (
     <>
       <section className="compact-hero">
         <div className="kicker" data-reveal="eyebrow">How to Reach</div>
-        <h1 data-reveal="heading">Getting to <em>Rosary Nest.</em></h1>
+        <h1 data-reveal="heading">Getting to <em>RosaryNest.</em></h1>
         <p className="subhead" data-reveal="body">Munnar is a journey. We hope it&#39;s part of the pleasure.</p>
       </section>
 
@@ -43,9 +47,8 @@ export default function HowToReachPage() {
             that most guests photograph from the back seat.
           </p>
           <p className="sub" data-reveal="fade" style={{ "--reveal-i": 1 } as React.CSSProperties}>
-            <strong>We can arrange a car</strong> for ₹6,500 each way — driven by Kurian, who has done
-            this drive for us since 2017 and will stop where you&#39;d like him to. Let us know when
-            you book.
+            <strong>We can arrange a car</strong> — driven by our driver, who knows this route well
+            and will stop where you&#39;d like him to. We can arrange this, ask us when you book.
           </p>
         </div>
       </section>
@@ -63,28 +66,27 @@ export default function HowToReachPage() {
         </div>
         <div>
           <h3 data-reveal="heading">ii. By train</h3>
-          <div className="title" data-reveal="eyebrow">From Ernakulam <em>(Cochin) station</em></div>
+          <div className="title" data-reveal="eyebrow">From Ernakulam <em>or Aluva station</em></div>
           <p data-reveal="body" style={{ "--reveal-i": 0 } as React.CSSProperties}>
-            The nearest railway station is Ernakulam, also 130 km away. Most overnight trains from
-            Chennai, Bangalore, and Mumbai stop here. From the station, the drive up is the same four
-            hours — same road, same view, same recommended driver.
+            The nearest major railheads are Ernakulam and Aluva, also about 130 km away. Most overnight
+            trains from Chennai, Bangalore, and Mumbai stop at one or the other. From the station, the
+            drive up is the same four hours — same road, same view, same recommended driver.
           </p>
           <p className="sub" data-reveal="fade" style={{ "--reveal-i": 1 } as React.CSSProperties}>
-            <strong>Trains we like:</strong> Trivandrum Mail from Chennai (arr. 06:00), Island Express
-            from Bangalore (arr. 07:40). Either way, you&#39;ll be at the property before sunset.
+            <strong>Check current timings</strong> when you book your ticket — either way, you&#39;ll
+            be at the property before sunset.
           </p>
         </div>
       </section>
 
       <section className="route" data-reveal-group>
-        <div className="ill" data-reveal="fade">
-          <svg viewBox="0 0 120 120" fill="none" stroke="#2D3F2F" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 100 Q 40 75 60 80 T 100 30" strokeWidth="1.5" />
-            <path d="M20 100 Q 40 75 60 80 T 100 30" strokeDasharray="1 4" stroke="#A8674A" />
-            <circle cx="100" cy="30" r="3" fill="#A8674A" stroke="none" />
-            <line x1="20" y1="100" x2="20" y2="110" />
-            <line x1="16" y1="106" x2="24" y2="106" />
-          </svg>
+        <div className="ill route-map" data-reveal="fade">
+          <iframe
+            src={mapSrc}
+            title="Map to RosaryNest"
+            loading="lazy"
+            style={{ width: "100%", height: "100%", border: 0 }}
+          />
         </div>
         <div>
           <h3 data-reveal="heading">iii. By road</h3>

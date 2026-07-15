@@ -39,7 +39,7 @@ export default async function ExperiencesPage() {
       <div className="exp-grid" data-reveal-group>
         {experiences.map((exp, i) => (
           <Link
-            className={`exp-card${i === 3 ? " tall" : ""}`}
+            className={`exp-card${i === 3 ? " tall" : ""}${i === 4 ? " wide" : ""}`}
             href={`/experiences/${exp.slug}`}
             key={exp.slug}
             style={{ "--reveal-i": i } as React.CSSProperties}

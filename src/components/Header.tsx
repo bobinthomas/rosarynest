@@ -13,7 +13,7 @@ const leftLinks = [
 
 const rightLinks = [
   { href: "/journal", label: "Journal" },
-  { href: "/the-family", label: "The Family" },
+  { href: "/about", label: "About Us" },
   { href: "/plan-your-stay", label: "Plan Your Stay" },
 ];
 

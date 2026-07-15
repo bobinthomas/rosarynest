@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SiteImage } from "@/components/SiteImage";
+import { Lightbox } from "@/components/Lightbox";
 
 type GalleryItem = {
   id: number;
@@ -20,6 +21,7 @@ const categories = [
 
 export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   const [filter, setFilter] = useState("all");
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const visible = filter === "all" ? items : items.filter((i) => i.category === filter);
 
   return (
@@ -29,7 +31,10 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           <a
             key={c.key}
             className={filter === c.key ? "is-active" : ""}
-            onClick={() => setFilter(c.key)}
+            onClick={() => {
+              setFilter(c.key);
+              setOpenIndex(null);
+            }}
             style={{ cursor: "pointer" }}
           >
             {c.label}
@@ -41,7 +46,17 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
       <section className="masonry" data-reveal-group>
         {visible.map((item, i) => (
           <div className="tile" key={item.id} style={{ "--reveal-i": i % 6 } as React.CSSProperties}>
-            <div className="img" data-reveal="image">
+            <div
+              className="img"
+              data-reveal="image"
+              role="button"
+              tabIndex={0}
+              aria-label={`Open photo: ${item.caption ?? "untitled"}`}
+              onClick={() => setOpenIndex(i)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") setOpenIndex(i);
+              }}
+            >
               <SiteImage
                 src={item.imageUrl}
                 alt={item.caption ?? ""}
@@ -53,6 +68,13 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           </div>
         ))}
       </section>
+
+      <Lightbox
+        images={visible.map((item) => ({ src: item.imageUrl, alt: item.caption ?? "", caption: item.caption }))}
+        index={openIndex}
+        onClose={() => setOpenIndex(null)}
+        onNavigate={setOpenIndex}
+      />
     </>
   );
 }

@@ -50,11 +50,11 @@ export function ContactForm() {
         <div className="row split">
           <div>
             <label htmlFor="name">Your name</label>
-            <input type="text" id="name" name="name" placeholder="Anna Joseph" required />
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required />
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="anna@email.com" required />
+            <input type="email" id="email" name="email" placeholder="jane@email.com" required />
           </div>
         </div>
         <div className="row split">

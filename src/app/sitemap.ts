@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 const staticPaths = [
   "",
   "the-land",
-  "the-family",
+  "about",
   "cottages",
   "experiences",
   "journal",

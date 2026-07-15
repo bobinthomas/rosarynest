@@ -8,7 +8,7 @@ import { getAltText } from "@/lib/image-alt";
 export const metadata = buildMetadata({
   title: "Cottages — RosaryNest",
   description:
-    "Four cottages at RosaryNest in Munnar, each at a different altitude on the property — fireplaces, deep tubs, and no televisions. See which one suits your stay.",
+    "Four cottages at RosaryNest in Munnar, each at a different altitude on the property — long windows and no televisions. See which one suits your stay.",
   path: "/cottages",
 });
 
@@ -38,7 +38,6 @@ export default async function CottagesPage() {
               </div>
               <div className="img-tag" data-reveal="fade">
                 <strong>{cottage.capacitySummary}</strong>
-                {cottage.areaSqm} m²
               </div>
             </div>
             <div className="info-col">
@@ -70,7 +69,7 @@ export default async function CottagesPage() {
         <div className="inner">
           <div>
             <h2 data-reveal="heading">Ready when <em>you are.</em></h2>
-            <p className="intro-line" data-reveal="body">Three nights, at least — the place takes a day to soften.</p>
+            <p className="intro-line" data-reveal="body">Stay as long as you like — the place takes a day to soften.</p>
           </div>
           <div>
             <Link className="quiet-link" href="/book">Check availability →</Link>
