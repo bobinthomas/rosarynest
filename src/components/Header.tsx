@@ -17,11 +17,13 @@ const rightLinks = [
   { href: "/plan-your-stay", label: "Plan Your Stay" },
 ];
 
-export function Header({ logoUrl }: { logoUrl: string }) {
+export function Header({ logoUrl, bookingUrl = "/book" }: { logoUrl: string; bookingUrl?: string }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isExternalBooking = /^https?:\/\//.test(bookingUrl);
+  const bookingProps = isExternalBooking ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   // The header is transparent with light text by design, so it can sit on
   // top of the homepage's dark hero video. Every other page has a light
@@ -76,12 +78,12 @@ export function Header({ logoUrl }: { logoUrl: string }) {
               {l.label}
             </Link>
           ))}
-          <Link className="reserve reserve-desktop" href="/book">
+          <Link className="reserve reserve-desktop" href={bookingUrl} {...bookingProps}>
             Reserve
           </Link>
         </nav>
 
-        <Link className="reserve reserve-header" href="/book">
+        <Link className="reserve reserve-header" href={bookingUrl} {...bookingProps}>
           Reserve
         </Link>
       </header>
@@ -114,7 +116,7 @@ export function Header({ logoUrl }: { logoUrl: string }) {
               ))}
             </ul>
           </div>
-          <Link className="reserve mobile-nav-reserve" href="/book" onClick={() => setOpen(false)}>
+          <Link className="reserve mobile-nav-reserve" href={bookingUrl} onClick={() => setOpen(false)} {...bookingProps}>
             Reserve
           </Link>
         </div>

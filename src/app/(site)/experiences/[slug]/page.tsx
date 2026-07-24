@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
 import { DetailGallery } from "@/components/DetailGallery";
 import { StructuredData } from "@/components/StructuredData";
-import { getExperienceBySlug, getExperiences } from "@/lib/content";
+import { getExperienceBySlug, getExperiences, getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import { getAltText } from "@/lib/image-alt";
@@ -32,10 +32,14 @@ export default async function ExperienceDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const experience = await getExperienceBySlug(slug);
+  const [experience, settings] = await Promise.all([getExperienceBySlug(slug), getSettings()]);
   if (!experience) notFound();
 
   const others = (await getExperiences()).filter((e) => e.slug !== slug).slice(0, 3);
+  const bookingUrl = settings.booking_url || "/book";
+  const bookingProps = settings.booking_url
+    ? { target: "_blank" as const, rel: "noopener noreferrer" }
+    : {};
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -89,7 +93,7 @@ export default async function ExperienceDetailPage({
               ))}
             </div>
             <div className="book-cta">
-              <Link className="booking-link" href="/book">Check availability</Link>
+              <Link className="booking-link" href={bookingUrl} {...bookingProps}>Check availability</Link>
             </div>
           </div>
         </div>

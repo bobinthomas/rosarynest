@@ -38,7 +38,10 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <>
       <StructuredData data={lodgingBusiness} />
       <ScrollReveal />
-      <Header logoUrl={settings.logo_url || "/images/RosaryNest-animated1.svg"} />
+      <Header
+        logoUrl={settings.logo_url || "/images/RosaryNest-animated1.svg"}
+        bookingUrl={settings.booking_url || "/book"}
+      />
       <main>{children}</main>
       <Footer />
     </>

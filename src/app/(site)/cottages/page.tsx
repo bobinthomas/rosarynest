@@ -38,6 +38,7 @@ export default async function CottagesPage() {
               </div>
               <div className="img-tag" data-reveal="fade">
                 <strong>{cottage.capacitySummary}</strong>
+                {cottage.nightlyRate ? <span>From ₹{cottage.nightlyRate.toLocaleString("en-IN")}/night</span> : null}
               </div>
             </div>
             <div className="info-col">

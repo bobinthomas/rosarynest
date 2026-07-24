@@ -20,7 +20,10 @@ export default async function NotFound() {
   return (
     <>
       <ScrollReveal />
-      <Header logoUrl={settings.logo_url || "/images/RosaryNest-animated1.svg"} />
+      <Header
+        logoUrl={settings.logo_url || "/images/RosaryNest-animated1.svg"}
+        bookingUrl={settings.booking_url || "/book"}
+      />
       <main>
         <div className="not-found">
           <p className="nf-num" data-reveal="heading">

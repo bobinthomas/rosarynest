@@ -211,6 +211,11 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="cta-strip">
+        <p className="line" data-reveal="heading">Sometimes the whole place is the plan.</p>
+        <Link className="quiet-link" href="/exclusive-use">Explore exclusive use →</Link>
+      </section>
+
       <section className="reserve-block scene" id="reserve" data-chapter="06 · Reserve">
         <div className="inner">
           <div className="kicker eyebrow" data-reveal="eyebrow">Plan your stay</div>
@@ -219,7 +224,14 @@ export default async function Home() {
             <span className="line-wrap"><span className="line">The place takes a day to soften.</span></span>
           </h2>
 
-          <form className="reserve-form" action="/book" method="get" data-reveal="fade">
+          <form
+            className="reserve-form"
+            action={settings.booking_url || "/book"}
+            method="get"
+            target={settings.booking_url ? "_blank" : undefined}
+            rel={settings.booking_url ? "noopener noreferrer" : undefined}
+            data-reveal="fade"
+          >
             <div className="field">
               <label>Arrival</label>
               <input type="text" name="arrival" placeholder="Thu, 14 May" />

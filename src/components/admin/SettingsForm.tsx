@@ -7,6 +7,7 @@ const textFields: { key: string; label: string }[] = [
   { key: "site_name", label: "Site name" },
   { key: "tagline", label: "Tagline" },
   { key: "established_year", label: "Established year" },
+  { key: "booking_url", label: "Booking URL (third-party booking system)" },
   { key: "phone", label: "Phone" },
   { key: "whatsapp", label: "WhatsApp" },
   { key: "email", label: "Email" },

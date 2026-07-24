@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
 import { DetailGallery } from "@/components/DetailGallery";
 import { StructuredData } from "@/components/StructuredData";
-import { getCottageBySlug, getCottages } from "@/lib/content";
+import { getCottageBySlug, getCottages, getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import { getAltText } from "@/lib/image-alt";
@@ -32,11 +32,19 @@ export default async function CottageDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [cottage, allCottages] = await Promise.all([getCottageBySlug(slug), getCottages()]);
+  const [cottage, allCottages, settings] = await Promise.all([
+    getCottageBySlug(slug),
+    getCottages(),
+    getSettings(),
+  ]);
 
   if (!cottage) notFound();
 
   const others = allCottages.filter((c) => c.slug !== slug).slice(0, 3);
+  const bookingUrl = settings.booking_url || `/book?cottage=${cottage.slug}`;
+  const bookingProps = settings.booking_url
+    ? { target: "_blank" as const, rel: "noopener noreferrer" }
+    : {};
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -64,6 +72,13 @@ export default async function CottageDetailPage({
           <div className="spec" data-reveal="fade">
             <span>Capacity</span>
             {cottage.capacitySummary}
+            {cottage.nightlyRate ? (
+              <>
+                <br />
+                <span>From</span>
+                ₹{cottage.nightlyRate.toLocaleString("en-IN")}/night
+              </>
+            ) : null}
           </div>
         </div>
       </section>
@@ -89,7 +104,7 @@ export default async function CottageDetailPage({
               ))}
             </div>
             <div className="book-cta">
-              <Link className="booking-link" href={`/book?cottage=${cottage.slug}`}>
+              <Link className="booking-link" href={bookingUrl} {...bookingProps}>
                 Check availability
               </Link>
             </div>

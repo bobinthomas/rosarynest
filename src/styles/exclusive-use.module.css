@@ -1,0 +1,149 @@
+/* New pieces the existing design system doesn't already provide, built
+   only from the tokens in globals.css / rosary-styles.css (no new colours,
+   fonts, sizes, radii, or spacing values). Everything else in this page
+   reuses global classes (.compact-hero, .card-grid, .card, .contact-form,
+   .privacy-note, .quiet-link) directly. */
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 1280px;
+  margin: 36px auto 0;
+  padding: 0 56px;
+}
+
+/* Square chip, matching the existing post-tag pattern — the site uses no
+   border-radius anywhere except circular dots, so pills stay square-edged. */
+.pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+}
+
+.note {
+  max-width: 1280px;
+  margin: 28px auto 0;
+  padding: 0 56px;
+}
+
+/* Combined with the global .container-narrow class, which already provides
+   the 720px width, centering, and horizontal padding used elsewhere. */
+.enquirySection {
+  margin-top: 96px;
+  margin-bottom: 120px;
+}
+
+.enquiryCard {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  padding: 48px;
+}
+
+.enquiryCard h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--forest);
+  margin: 0 0 12px;
+}
+
+.enquirySubtext {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 36px;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.fieldError {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--copper);
+  margin-top: 8px;
+}
+
+.formStatus {
+  margin-top: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--copper);
+}
+
+.btnRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+/* Outline variant of the existing solid form button (.contact-form button),
+   following the same invert-on-hover treatment already used by
+   .reserve-header elsewhere in the site. */
+.btnSecondary {
+  background: transparent;
+  color: var(--forest);
+  border: 1px solid var(--forest);
+  padding: 18px 40px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.btnSecondary:hover,
+.btnSecondary:focus-visible {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.btnNote {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+@media (max-width: 1024px) {
+  .pills,
+  .note {
+    padding: 0 22px;
+  }
+  .fieldGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .enquiryCard {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+  .btnRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
