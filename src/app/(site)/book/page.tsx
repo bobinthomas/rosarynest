@@ -14,14 +14,16 @@ export default async function BookPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const [params, settings] = await Promise.all([searchParams, getSettings()]);
-  const staahBaseUrl = process.env.NEXT_PUBLIC_STAAH_BOOKING_URL;
+  const bookingEngineUrl = process.env.NEXT_PUBLIC_BOOKING_ENGINE_URL;
 
   const query = new URLSearchParams();
   for (const key of ["arrival", "departure", "guests", "cottage"]) {
     const value = params[key];
     if (typeof value === "string" && value) query.set(key, value);
   }
-  const iframeSrc = staahBaseUrl ? `${staahBaseUrl}${staahBaseUrl.includes("?") ? "&" : "?"}${query.toString()}` : null;
+  const iframeSrc = bookingEngineUrl
+    ? `${bookingEngineUrl}${bookingEngineUrl.includes("?") ? "&" : "?"}${query.toString()}`
+    : null;
 
   return (
     <>
@@ -33,7 +35,7 @@ export default async function BookPage({
 
       <section className="booking-frame">
         <div className="iframe-shell" data-reveal="fade">
-          <span className="iframe-label">Reservation system · powered by STAAH</span>
+          <span className="iframe-label">Reservation system · powered by Stayflexi</span>
           {iframeSrc ? (
             <iframe
               src={iframeSrc}
@@ -42,7 +44,7 @@ export default async function BookPage({
             />
           ) : (
             <div style={{ padding: 48, textAlign: "center", color: "var(--mute)", fontFamily: "var(--mono)", fontSize: 12, letterSpacing: "0.08em" }}>
-              Booking engine not yet configured. Set NEXT_PUBLIC_STAAH_BOOKING_URL once your STAAH
+              Booking engine not yet configured. Set NEXT_PUBLIC_BOOKING_ENGINE_URL once your Stayflexi
               property is set up — arrival, departure, guests, and cottage are already passed through
               as query parameters ({query.toString() || "none supplied"}).
             </div>
