@@ -90,7 +90,7 @@ export default async function Home() {
               </svg>
             </div>
             <div className="num" data-reveal="eyebrow">i.</div>
-            <h3 data-reveal="heading">The Land</h3>
+            <h2 data-reveal="heading">The Land</h2>
             <p data-reveal="body">
               A south-facing fold of forest above the valley below, with a lake at its foot and a dam
               beyond. The town is twenty minutes the other way; here, no one is hurrying anywhere.
@@ -107,7 +107,7 @@ export default async function Home() {
               </svg>
             </div>
             <div className="num" data-reveal="eyebrow">ii.</div>
-            <h3 data-reveal="heading">The Cottages</h3>
+            <h2 data-reveal="heading">The Cottages</h2>
             <p data-reveal="body">
               Four cottages — Tarry, Scarlet, Sparrow, and Eyrie — each named for what it feels like to
               stay there. Long windows, warm beds, no televisions; some keep a fireplace for the cold
@@ -130,7 +130,7 @@ export default async function Home() {
               </svg>
             </div>
             <div className="num" data-reveal="eyebrow">iii.</div>
-            <h3 data-reveal="heading">The Experiences</h3>
+            <h2 data-reveal="heading">The Experiences</h2>
             <p data-reveal="body">
               Stargazing on the lawn, bonfires when the mist allows, dinners cooked from the garden and
               the morning&#39;s market. Nothing scheduled. Everything optional.

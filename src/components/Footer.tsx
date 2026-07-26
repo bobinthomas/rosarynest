@@ -13,7 +13,7 @@ export async function Footer() {
           <div className="tagline">{settings.tagline}</div>
         </div>
         <div>
-          <h5>Visit</h5>
+          <h3>Visit</h3>
           <ul>
             <li><Link href="/the-land">The Land</Link></li>
             <li><Link href="/cottages">Cottages</Link></li>
@@ -24,7 +24,7 @@ export async function Footer() {
           </ul>
         </div>
         <div>
-          <h5>Stay</h5>
+          <h3>Stay</h3>
           <ul>
             <li><Link href="/book">Check availability</Link></li>
             <li><Link href="/plan-your-stay">Plan your stay</Link></li>
@@ -34,7 +34,7 @@ export async function Footer() {
           </ul>
         </div>
         <div>
-          <h5>Contact</h5>
+          <h3>Contact</h3>
           <ul>
             <li>{settings.address_line1}, {settings.address_line2}</li>
             <li><a href={`tel:${settings.phone}`}>{settings.phone}</a></li>
