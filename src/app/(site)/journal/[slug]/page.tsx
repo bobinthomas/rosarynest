@@ -44,9 +44,23 @@ export default async function JournalPostPage({
     ],
   };
 
+  const blogPosting = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt ?? post.content.slice(0, 155),
+    image: post.featuredImage ? `${SITE_URL}${post.featuredImage}` : undefined,
+    datePublished: new Date(post.publishedAt).toISOString(),
+    dateModified: new Date(post.updatedAt).toISOString(),
+    author: post.author ? { "@type": "Person", name: post.author } : undefined,
+    publisher: { "@type": "Organization", name: "RosaryNest" },
+    mainEntityOfPage: `${SITE_URL}/journal/${post.slug}`,
+  };
+
   return (
     <>
       <StructuredData data={breadcrumb} />
+      <StructuredData data={blogPosting} />
       <header className="post-header">
         <div className="breadcrumb" data-reveal="eyebrow">
           <Link href="/journal">Journal</Link> <span className="sep">/</span> {post.category}
