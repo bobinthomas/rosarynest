@@ -16,7 +16,10 @@ export default async function Home() {
 
   const useHeroImage = settings.hero_media_type === "image" && Boolean(settings.hero_image_url);
 
-  const heroVideoSrc = settings.hero_video_url || "/video/Hero-new.mp4";
+  const heroVideoOverride = Boolean(settings.hero_video_url);
+  const heroVideoSrc = settings.hero_video_url || "/video/hero.mp4";
+  const heroVideoWebm = heroVideoOverride ? null : "/video/hero.webm";
+  const heroPoster = heroVideoOverride ? undefined : "/video/hero-poster.jpg";
 
   const homeVideoId = settings.home_video_youtube_url ? extractYouTubeId(settings.home_video_youtube_url) : null;
 
@@ -28,7 +31,8 @@ export default async function Home() {
             {useHeroImage ? (
               <SiteImage src={settings.hero_image_url} alt="" priority />
             ) : (
-              <video className="hero-video" autoPlay muted loop playsInline preload="auto">
+              <video className="hero-video" autoPlay muted loop playsInline preload="auto" poster={heroPoster}>
+                {heroVideoWebm ? <source src={heroVideoWebm} type="video/webm" /> : null}
                 <source src={heroVideoSrc} type="video/mp4" />
               </video>
             )}

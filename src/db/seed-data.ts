@@ -6,7 +6,7 @@ export const settingsSeed: Record<string, string> = {
   logo_url: "/images/RosaryNest-animated1.svg",
   hero_media_type: "video",
   hero_image_url: "",
-  hero_video_url: "/video/Hero-new.mp4",
+  hero_video_url: "",
   site_name: "RosaryNest",
   tagline: "where stillness stays",
   established_year: "2010",

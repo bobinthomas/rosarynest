@@ -108,7 +108,7 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
           label="Hero video"
           accept="video/*"
           kind="video"
-          defaultValue={settings.hero_video_url || "/video/Hero-new.mp4"}
+          defaultValue={settings.hero_video_url || "/video/hero.mp4"}
         />
       ) : (
         <MediaUploadField
