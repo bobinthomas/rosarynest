@@ -238,44 +238,35 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="cta-strip">
-        <p className="line" data-reveal="heading">Sometimes the whole place is the plan.</p>
-        <Link className="quiet-link" href="/exclusive-use">Explore exclusive use →</Link>
-      </section>
-
       <section className="reserve-block scene" id="reserve" data-chapter="07 · Reserve">
+        {settings.reserve_image_url ? (
+          <div className="bg" data-reveal="image">
+            <SiteImage src={settings.reserve_image_url} alt="" sizes="100vw" />
+          </div>
+        ) : null}
+
         <div className="inner">
-          <div className="kicker eyebrow" data-reveal="eyebrow">Plan your stay</div>
-          <h2 data-reveal="heading">
-            <span className="line-wrap"><span className="line">Come for <em>as long as you like.</em></span></span>
-            <span className="line-wrap"><span className="line">The place takes a day to soften.</span></span>
-          </h2>
+          <div className="cta-line" data-reveal="heading">
+            <p>Sometimes the whole place is the plan.</p>
+            <Link className="quiet-link" href="/exclusive-use">Explore exclusive use →</Link>
+          </div>
 
-          <form
-            className="reserve-form"
-            action={settings.booking_url || "/book"}
-            method="get"
-            target={settings.booking_url ? "_blank" : undefined}
-            rel={settings.booking_url ? "noopener noreferrer" : undefined}
-            data-reveal="fade"
-          >
-            <div className="field">
-              <label>Arrival</label>
-              <input type="text" name="arrival" placeholder="Thu, 14 May" />
-            </div>
-            <div className="field">
-              <label>Departure</label>
-              <input type="text" name="departure" placeholder="Sun, 17 May" />
-            </div>
-            <div className="field">
-              <label>Guests</label>
-              <input type="text" name="guests" placeholder="2 adults" />
-            </div>
-            <button type="submit">Check availability</button>
-          </form>
+          <div className="plan-copy" data-reveal="fade">
+            <div className="kicker eyebrow">Plan your stay</div>
+            <h2>Come for <em>as long as you like.</em> The place takes a day to soften.</h2>
 
-          <div className="aside">
-            or call us at <a href={`tel:${settings.phone}`}>{settings.phone}</a> — we answer personally.
+            <a
+              className="cta-button"
+              href={settings.booking_url || "/book"}
+              target={settings.booking_url ? "_blank" : undefined}
+              rel={settings.booking_url ? "noopener noreferrer" : undefined}
+            >
+              Check availability
+            </a>
+
+            <div className="aside">
+              or call us at <a href={`tel:${settings.phone}`}>{settings.phone}</a> — we answer personally.
+            </div>
           </div>
         </div>
       </section>

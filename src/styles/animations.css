@@ -128,7 +128,7 @@ main:has(> .hero) {
 .reserve-header,
 .mobile-nav-reserve,
 .booking-link,
-.reserve-form button,
+.reserve-block .cta-button,
 .contact-form button {
   position: relative;
   z-index: 0;
@@ -141,7 +141,7 @@ main:has(> .hero) {
 .reserve-header::before,
 .mobile-nav-reserve::before,
 .booking-link::before,
-.reserve-form button::before,
+.reserve-block .cta-button::before,
 .contact-form button::before {
   content: "";
   position: absolute;
@@ -157,7 +157,7 @@ main:has(> .hero) {
 .reserve-header:hover::before,
 .mobile-nav-reserve:hover::before,
 .booking-link:hover::before,
-.reserve-form button:hover::before,
+.reserve-block .cta-button:hover::before,
 .contact-form button:hover::before {
   transform: scaleX(1);
 }
@@ -180,12 +180,12 @@ main:has(> .hero) {
 
 /* copper-filled CTAs (booking link, reserve form submit): sweep to cream, text to forest */
 .booking-link::before,
-.reserve-form button::before {
+.reserve-block .cta-button::before {
   background: var(--cream);
 }
 
 .booking-link:hover,
-.reserve-form button:hover {
+.reserve-block .cta-button:hover {
   color: var(--forest) !important;
   background: var(--copper) !important;
 }
@@ -319,7 +319,7 @@ main:has(> .hero) {
 .reserve-header:focus-visible::before,
 .mobile-nav-reserve:focus-visible::before,
 .booking-link:focus-visible::before,
-.reserve-form button:focus-visible::before,
+.reserve-block .cta-button:focus-visible::before,
 .contact-form button:focus-visible::before {
   transform: scaleX(1);
 }
@@ -333,7 +333,7 @@ main:has(> .hero) {
 }
 
 .booking-link:focus-visible,
-.reserve-form button:focus-visible {
+.reserve-block .cta-button:focus-visible {
   color: var(--forest) !important;
   background: var(--copper) !important;
 }

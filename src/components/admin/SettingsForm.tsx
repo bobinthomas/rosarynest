@@ -31,6 +31,7 @@ const allKeys = [
   "home_video_youtube_url",
   "home_video_poster_url",
   "home_video_caption",
+  "reserve_image_url",
   ...textFields.map((f) => f.key),
 ];
 
@@ -135,6 +136,16 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
         defaultUrl={settings.home_video_youtube_url ?? ""}
         defaultPoster={settings.home_video_poster_url ?? ""}
         defaultCaption={settings.home_video_caption ?? ""}
+      />
+
+      <h3 style={{ margin: "12px 0 -8px", fontFamily: "var(--serif)", color: "var(--forest)" }}>Reserve section</h3>
+
+      <MediaUploadField
+        name="reserve_image_url"
+        label="Background image (optional — falls back to the solid forest background)"
+        accept="image/*"
+        kind="image"
+        defaultValue={settings.reserve_image_url ?? ""}
       />
 
       <h3 style={{ margin: "12px 0 -8px", fontFamily: "var(--serif)", color: "var(--forest)" }}>Contact & details</h3>

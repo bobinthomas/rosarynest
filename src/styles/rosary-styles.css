@@ -4743,12 +4743,36 @@ main {
 
 /* ============ RESERVE ============ */
 .reserve-block {
+  position: relative;
   background: var(--forest);
   color: var(--cream);
   padding: 140px 56px;
+  overflow: hidden;
+}
+
+.reserve-block .bg {
+  position: absolute;
+  inset: 0;
+}
+
+.reserve-block .bg picture,
+.reserve-block .bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reserve-block .bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(35, 48, 34, 0.6), rgba(35, 48, 34, 0.85));
 }
 
 .reserve-block .inner {
+  position: relative;
+  z-index: 1;
   max-width: 1080px;
   margin: 0 auto;
   display: grid;
@@ -4756,74 +4780,58 @@ main {
   text-align: center;
 }
 
-.reserve-block .kicker {
-  color: rgba(245, 242, 236, 0.6);
-  margin-bottom: 28px;
+.reserve-block .cta-line {
+  margin-bottom: 72px;
 }
 
-.reserve-block h2 {
+.reserve-block .cta-line p {
   font-family: var(--serif);
+  font-style: italic;
   font-weight: 300;
-  font-size: clamp(36px, 7vw, 64px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.3;
   color: var(--cream);
-  margin: 0 0 56px;
+  max-width: 26ch;
+  margin: 0 auto 24px;
   text-wrap: balance;
 }
 
-.reserve-block h2 em {
+.reserve-block .quiet-link {
+  color: var(--cream);
+  border-bottom-color: rgba(245, 242, 236, 0.4);
+}
+
+.reserve-block .quiet-link:hover {
+  color: var(--copper);
+  border-bottom-color: var(--copper);
+}
+
+.reserve-block .plan-copy {
+  padding-top: 56px;
+  border-top: 1px solid rgba(245, 242, 236, 0.18);
+}
+
+.reserve-block .kicker {
+  color: rgba(245, 242, 236, 0.6);
+  margin-bottom: 20px;
+}
+
+.reserve-block .plan-copy h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.4;
+  color: rgba(245, 242, 236, 0.92);
+  margin: 0 0 32px;
+  text-wrap: balance;
+}
+
+.reserve-block .plan-copy h2 em {
   font-style: italic;
 }
 
-.reserve-form {
-  display: grid;
-  grid-template-columns: 1.2fr 1.2fr 1fr auto;
-  gap: 0;
-  background: rgba(245, 242, 236, 0.06);
-  border: 1px solid rgba(245, 242, 236, 0.18);
-  margin-top: 0;
-  align-items: stretch;
-}
-
-.reserve-form .field {
-  padding: 24px 28px;
-  text-align: left;
-  border-right: 1px solid rgba(245, 242, 236, 0.18);
-}
-
-.reserve-form .field:nth-child(3) {
-  border-right: 1px solid rgba(245, 242, 236, 0.18);
-}
-
-.reserve-form .field label {
-  display: block;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(245, 242, 236, 0.55);
-  margin-bottom: 10px;
-}
-
-.reserve-form .field input,
-.reserve-form .field select {
-  background: transparent;
-  border: 0;
-  outline: 0;
-  color: var(--cream);
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 300;
-  width: 100%;
-  padding: 0;
-}
-
-.reserve-form .field input::placeholder {
-  color: rgba(245, 242, 236, 0.6);
-}
-
-.reserve-form button {
+.reserve-block .cta-button {
+  display: inline-block;
   background: var(--copper);
   color: var(--cream);
   border: 0;
@@ -4832,18 +4840,18 @@ main {
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  padding: 0 48px;
-  cursor: pointer;
-  transition: background 300ms ease;
+  padding: 20px 48px;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease;
 }
 
-.reserve-form button:hover {
+.reserve-block .cta-button:hover {
   background: var(--cream);
   color: var(--forest);
 }
 
 .reserve-block .aside {
-  margin-top: 36px;
+  margin-top: 32px;
   font-family: var(--serif);
   font-style: italic;
   font-size: 17px;
@@ -4893,16 +4901,6 @@ main {
   .journal-grid {
     grid-template-columns: 1fr;
     gap: 64px;
-  }
-  .reserve-form {
-    grid-template-columns: 1fr;
-  }
-  .reserve-form .field {
-    border-right: 0;
-    border-bottom: 1px solid rgba(245, 242, 236, 0.18);
-  }
-  .reserve-form button {
-    padding: 22px;
   }
   .intro p {
     font-size: 22px;
