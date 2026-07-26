@@ -1254,12 +1254,15 @@ main {
   padding: 0 56px;
 }
 
-.booking-frame .iframe-shell {
+.booking-frame .booking-cta-card {
   background: var(--cream);
   border: 1px solid var(--rule);
-  padding: 40px;
-  min-height: 820px;
+  padding: 96px 40px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .booking-frame .iframe-label {
@@ -1271,6 +1274,26 @@ main {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mute);
+}
+
+.booking-frame .cta-button {
+  display: inline-block;
+  background: var(--copper);
+  color: var(--cream);
+  border: 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 20px 48px;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.booking-frame .cta-button:hover {
+  background: var(--forest);
+  color: var(--cream);
 }
 
 /* Mock booking widget that fills the iframe area */
@@ -1520,9 +1543,8 @@ main {
   .booking-frame {
     padding: 0 22px;
   }
-  .booking-frame .iframe-shell {
-    padding: 24px;
-    min-height: 0;
+  .booking-frame .booking-cta-card {
+    padding: 56px 24px;
   }
   .mock-engine {
     grid-template-columns: 1fr;

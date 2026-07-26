@@ -21,7 +21,7 @@ export default async function BookPage({
     const value = params[key];
     if (typeof value === "string" && value) query.set(key, value);
   }
-  const iframeSrc = bookingEngineUrl
+  const bookingHref = bookingEngineUrl
     ? `${bookingEngineUrl}${bookingEngineUrl.includes("?") ? "&" : "?"}${query.toString()}`
     : null;
 
@@ -34,14 +34,12 @@ export default async function BookPage({
       </section>
 
       <section className="booking-frame">
-        <div className="iframe-shell" data-reveal="fade">
+        <div className="booking-cta-card" data-reveal="fade">
           <span className="iframe-label">Reservation system · powered by Stayflexi</span>
-          {iframeSrc ? (
-            <iframe
-              src={iframeSrc}
-              title="RosaryNest booking engine"
-              style={{ width: "100%", minHeight: 640, border: 0 }}
-            />
+          {bookingHref ? (
+            <a className="cta-button" href={bookingHref} target="_blank" rel="noopener noreferrer">
+              Check availability &amp; book
+            </a>
           ) : (
             <div style={{ padding: 48, textAlign: "center", color: "var(--mute)", fontFamily: "var(--mono)", fontSize: 12, letterSpacing: "0.08em" }}>
               Booking engine not yet configured. Set NEXT_PUBLIC_BOOKING_ENGINE_URL once your Stayflexi
