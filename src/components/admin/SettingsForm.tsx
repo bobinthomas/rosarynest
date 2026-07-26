@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from "react";
 import { MediaUploadField } from "@/components/admin/MediaUploadField";
+import { YouTubeVideoField } from "@/components/admin/YouTubeVideoField";
+import { extractYouTubeId } from "@/lib/youtube";
 
 const textFields: { key: string; label: string }[] = [
   { key: "site_name", label: "Site name" },
@@ -26,20 +28,33 @@ const allKeys = [
   "hero_media_type",
   "hero_image_url",
   "hero_video_url",
+  "home_video_youtube_url",
+  "home_video_poster_url",
+  "home_video_caption",
   ...textFields.map((f) => f.key),
 ];
 
 export function SettingsForm({ settings }: { settings: Record<string, string> }) {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
   const [heroMediaType, setHeroMediaType] = useState(settings.hero_media_type || "video");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSaving(true);
     setSaved(false);
+    setError("");
 
     const form = new FormData(e.currentTarget);
+
+    const homeVideoUrl = String(form.get("home_video_youtube_url") ?? "").trim();
+    if (homeVideoUrl && !extractYouTubeId(homeVideoUrl)) {
+      setError("Enter a valid YouTube link (watch, youtu.be, or embed URL).");
+      setSaving(false);
+      return;
+    }
+
     const body: Record<string, string> = {};
     for (const key of allKeys) {
       body[key] = String(form.get(key) ?? "");
@@ -52,7 +67,11 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
     });
 
     setSaving(false);
-    if (res.ok) setSaved(true);
+    if (res.ok) {
+      setSaved(true);
+    } else {
+      setError("Could not save. Check the fields and try again.");
+    }
   }
 
   return (
@@ -106,6 +125,18 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
       <input type="hidden" name={heroMediaType === "video" ? "hero_image_url" : "hero_video_url"}
         defaultValue={heroMediaType === "video" ? settings.hero_image_url ?? "" : settings.hero_video_url ?? ""} />
 
+      <h3 style={{ margin: "12px 0 -8px", fontFamily: "var(--serif)", color: "var(--forest)" }}>Homepage video section</h3>
+
+      <YouTubeVideoField
+        urlName="home_video_youtube_url"
+        posterName="home_video_poster_url"
+        captionName="home_video_caption"
+        label="Video (YouTube link — leave blank to hide the section)"
+        defaultUrl={settings.home_video_youtube_url ?? ""}
+        defaultPoster={settings.home_video_poster_url ?? ""}
+        defaultCaption={settings.home_video_caption ?? ""}
+      />
+
       <h3 style={{ margin: "12px 0 -8px", fontFamily: "var(--serif)", color: "var(--forest)" }}>Contact & details</h3>
 
       {textFields.map((field) => (
@@ -114,6 +145,7 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
           <input id={field.key} name={field.key} defaultValue={settings[field.key] ?? ""} />
         </div>
       ))}
+      {error ? <p className="admin-error">{error}</p> : null}
       <div className="actions">
         <button className="admin-btn" type="submit" disabled={saving}>
           {saving ? "Saving…" : "Save settings"}

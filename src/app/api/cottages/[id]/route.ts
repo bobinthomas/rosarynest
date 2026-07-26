@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { cottages } from "@/db/schema";
 import { requireAdmin } from "@/lib/require-admin";
+import { extractYouTubeId } from "@/lib/youtube";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const unauthorized = await requireAdmin();
@@ -21,6 +22,11 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
   const { id } = await params;
   const body = (await request.json()) as Record<string, any>;
+
+  if (body.videoYoutubeUrl && !extractYouTubeId(body.videoYoutubeUrl)) {
+    return NextResponse.json({ error: "Enter a valid YouTube link." }, { status: 400 });
+  }
+
   const db = await getDb();
   const [row] = await db
     .update(cottages)
@@ -33,6 +39,9 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       areaSqm: body.areaSqm ?? null,
       amenities: body.amenities ?? [],
       images: body.images ?? [],
+      videoYoutubeUrl: body.videoYoutubeUrl || null,
+      videoPosterUrl: body.videoPosterUrl || null,
+      videoCaption: body.videoCaption || null,
       displayOrder: body.displayOrder ?? 0,
       status: body.status ?? "published",
       updatedAt: new Date().toISOString(),

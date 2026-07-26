@@ -3,6 +3,8 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { MediaListUploadField } from "@/components/admin/MediaListUploadField";
+import { YouTubeVideoField } from "@/components/admin/YouTubeVideoField";
+import { extractYouTubeId } from "@/lib/youtube";
 
 type Cottage = {
   id?: number;
@@ -14,6 +16,9 @@ type Cottage = {
   areaSqm: number | null;
   amenities: string[];
   images: string[];
+  videoYoutubeUrl: string | null;
+  videoPosterUrl: string | null;
+  videoCaption: string | null;
   displayOrder: number;
   status: string;
 };
@@ -29,6 +34,13 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
     setError("");
 
     const form = new FormData(e.currentTarget);
+    const videoYoutubeUrl = String(form.get("videoYoutubeUrl") ?? "").trim();
+    if (videoYoutubeUrl && !extractYouTubeId(videoYoutubeUrl)) {
+      setError("Enter a valid YouTube link (watch, youtu.be, or embed URL).");
+      setSaving(false);
+      return;
+    }
+
     const body = {
       slug: form.get("slug"),
       name: form.get("name"),
@@ -38,6 +50,9 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
       areaSqm: Number(form.get("areaSqm")) || null,
       amenities: String(form.get("amenities") ?? "").split("\n").map((s) => s.trim()).filter(Boolean),
       images: String(form.get("images") ?? "").split("\n").map((s) => s.trim()).filter(Boolean),
+      videoYoutubeUrl: videoYoutubeUrl || null,
+      videoPosterUrl: form.get("videoPosterUrl") || null,
+      videoCaption: form.get("videoCaption") || null,
       displayOrder: Number(form.get("displayOrder")) || 0,
       status: form.get("status"),
     };
@@ -96,6 +111,15 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
         <textarea id="amenities" name="amenities" defaultValue={cottage?.amenities?.join("\n")} style={{ minHeight: 120 }} />
       </div>
       <MediaListUploadField name="images" label="Images (one per line)" defaultValue={cottage?.images?.join("\n")} />
+      <YouTubeVideoField
+        urlName="videoYoutubeUrl"
+        posterName="videoPosterUrl"
+        captionName="videoCaption"
+        label="Video (YouTube link)"
+        defaultUrl={cottage?.videoYoutubeUrl ?? ""}
+        defaultPoster={cottage?.videoPosterUrl ?? ""}
+        defaultCaption={cottage?.videoCaption ?? ""}
+      />
       <div>
         <label htmlFor="status">Status</label>
         <select id="status" name="status" defaultValue={cottage?.status ?? "published"}>

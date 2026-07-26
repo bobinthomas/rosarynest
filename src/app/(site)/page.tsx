@@ -2,7 +2,9 @@ import Link from "next/link";
 import { getCottages, getExperiences, getPosts, getSettings } from "@/lib/content";
 import { HeroParallax } from "@/components/HeroParallax";
 import { SiteImage } from "@/components/SiteImage";
+import { YouTubeFacade } from "@/components/YouTubeFacade";
 import { getAltText } from "@/lib/image-alt";
+import { extractYouTubeId } from "@/lib/youtube";
 
 export default async function Home() {
   const [cottages, experiences, latestPosts, settings] = await Promise.all([
@@ -15,6 +17,8 @@ export default async function Home() {
   const useHeroImage = settings.hero_media_type === "image" && Boolean(settings.hero_image_url);
 
   const heroVideoSrc = settings.hero_video_url || "/video/Hero-new.mp4";
+
+  const homeVideoId = settings.home_video_youtube_url ? extractYouTubeId(settings.home_video_youtube_url) : null;
 
   return (
     <>
@@ -132,7 +136,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="cottages scene" data-chapter="04 · Cottages">
+      {homeVideoId ? (
+        <section className="video-feature scene" data-chapter="04 · In Motion">
+          <div className="head">
+            <div className="left">
+              <div className="eyebrow kicker u-color-copper" data-reveal="eyebrow">Watch</div>
+              <h2 data-reveal="heading">
+                <span className="line-wrap"><span className="line">See the estate <em>in motion.</em></span></span>
+              </h2>
+            </div>
+          </div>
+          <YouTubeFacade
+            videoId={homeVideoId}
+            posterUrl={settings.home_video_poster_url}
+            caption={settings.home_video_caption}
+            title="RosaryNest"
+          />
+        </section>
+      ) : null}
+
+      <section className="cottages scene" data-chapter="05 · Cottages">
         <div className="head">
           <div className="left">
             <div className="eyebrow kicker u-color-copper" data-reveal="eyebrow">A Peek</div>
@@ -171,7 +194,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="experiences-home scene" data-chapter="05 · Experiences">
+      <section className="experiences-home scene" data-chapter="06 · Experiences">
         <div className="head">
           <div className="left">
             <div className="eyebrow kicker u-color-copper" data-reveal="eyebrow">Nothing Scheduled</div>
@@ -216,7 +239,7 @@ export default async function Home() {
         <Link className="quiet-link" href="/exclusive-use">Explore exclusive use →</Link>
       </section>
 
-      <section className="reserve-block scene" id="reserve" data-chapter="06 · Reserve">
+      <section className="reserve-block scene" id="reserve" data-chapter="07 · Reserve">
         <div className="inner">
           <div className="kicker eyebrow" data-reveal="eyebrow">Plan your stay</div>
           <h2 data-reveal="heading">
@@ -253,7 +276,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="journal scene" data-chapter="07 · Journal">
+      <section className="journal scene" data-chapter="08 · Journal">
         <div className="head">
           <div>
             <div className="eyebrow u-mb-18" data-reveal="eyebrow">The Journal</div>

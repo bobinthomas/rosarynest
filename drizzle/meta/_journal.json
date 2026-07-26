@@ -8,6 +8,13 @@
       "when": 1782994647762,
       "tag": "0000_giant_mandarin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785040251133,
+      "tag": "0001_shallow_marvel_boy",
+      "breakpoints": true
     }
   ]
 }

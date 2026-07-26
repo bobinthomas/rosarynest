@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
 import { DetailGallery } from "@/components/DetailGallery";
+import { YouTubeFacade } from "@/components/YouTubeFacade";
 import { StructuredData } from "@/components/StructuredData";
 import { getCottageBySlug, getCottages, getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import { getAltText } from "@/lib/image-alt";
+import { extractYouTubeId } from "@/lib/youtube";
 
 export async function generateMetadata({
   params,
@@ -41,6 +43,7 @@ export default async function CottageDetailPage({
   if (!cottage) notFound();
 
   const others = allCottages.filter((c) => c.slug !== slug).slice(0, 3);
+  const videoId = cottage.videoYoutubeUrl ? extractYouTubeId(cottage.videoYoutubeUrl) : null;
   const bookingUrl = settings.booking_url || `/book?cottage=${cottage.slug}`;
   const bookingProps = settings.booking_url
     ? { target: "_blank" as const, rel: "noopener noreferrer" }
@@ -88,6 +91,17 @@ export default async function CottageDetailPage({
       </div>
 
       <DetailGallery images={cottage.images} title={cottage.name} />
+
+      {videoId ? (
+        <section className="cottage-video">
+          <YouTubeFacade
+            videoId={videoId}
+            posterUrl={cottage.videoPosterUrl}
+            caption={cottage.videoCaption}
+            title={cottage.name}
+          />
+        </section>
+      ) : null}
 
       <section className="cottage">
         <div className="inner">
