@@ -1,16 +1,37 @@
 import Link from "next/link";
 import { getSettings } from "@/lib/content";
+import { SiteImage } from "@/components/SiteImage";
+import { FacebookIcon, InstagramIcon, TripAdvisorIcon, YouTubeIcon } from "@/components/SocialIcons";
+
+const socialLinks = [
+  { key: "instagram_url", label: "Instagram", Icon: InstagramIcon },
+  { key: "facebook_url", label: "Facebook", Icon: FacebookIcon },
+  { key: "youtube_url", label: "YouTube", Icon: YouTubeIcon },
+  { key: "tripadvisor_url", label: "TripAdvisor", Icon: TripAdvisorIcon },
+] as const;
 
 export async function Footer() {
   const settings = await getSettings();
   const year = new Date().getFullYear();
+  const socials = socialLinks.filter((s) => settings[s.key]);
 
   return (
     <footer className="site-footer">
       <div className="footer-grid">
         <div>
-          <div className="logo-mark">{settings.site_name ?? "RosaryNest"}</div>
+          <Link href="/" className="footer-logo">
+            <SiteImage src={settings.logo_url || "/images/RosaryNest-animated1.svg"} alt={settings.site_name ?? "RosaryNest"} />
+          </Link>
           <div className="tagline">{settings.tagline}</div>
+          {socials.length ? (
+            <div className="footer-social">
+              {socials.map(({ key, label, Icon }) => (
+                <a key={key} href={settings[key]} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                  <Icon />
+                </a>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div>
           <h3>Visit</h3>

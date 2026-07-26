@@ -81,6 +81,7 @@ export default async function ContactPage() {
         <div className="links">
           <a href={settings.instagram_url || "#"}>Instagram</a>
           <a href={settings.facebook_url || "#"}>Facebook</a>
+          <a href={settings.youtube_url || "#"}>YouTube</a>
           <a href={settings.tripadvisor_url || "#"}>TripAdvisor</a>
         </div>
       </section>

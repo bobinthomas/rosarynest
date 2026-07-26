@@ -19,6 +19,7 @@ const textFields: { key: string; label: string }[] = [
   { key: "longitude", label: "Longitude" },
   { key: "instagram_url", label: "Instagram URL" },
   { key: "facebook_url", label: "Facebook URL" },
+  { key: "youtube_url", label: "YouTube URL" },
   { key: "tripadvisor_url", label: "TripAdvisor URL" },
   { key: "hours_note", label: "Contact hours note" },
 ];

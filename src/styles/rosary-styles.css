@@ -379,14 +379,17 @@ body.nav-open {
   border-bottom: 1px solid rgba(245, 242, 236, 0.18);
 }
 
-.site-footer .logo-mark {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 32px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.site-footer .footer-logo {
+  display: inline-block;
   margin-bottom: 18px;
-  padding-left: 0.18em;
+  line-height: 0;
+}
+
+.site-footer .footer-logo img {
+  width: 175px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 .site-footer .tagline {
@@ -396,6 +399,30 @@ body.nav-open {
   line-height: 1.5;
   color: rgba(245, 242, 236, 0.78);
   max-width: 320px;
+}
+
+.site-footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.site-footer .footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 242, 236, 0.35);
+  color: var(--cream);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.site-footer .footer-social a:hover {
+  border-color: var(--copper);
+  color: var(--copper);
 }
 
 .site-footer h3 {
