@@ -659,10 +659,6 @@ body.nav-open {
 }
 
 @media (max-width: 480px) {
-  .site-footer .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
   .site-header {
     gap: 4px;
     padding: 10px 8px;

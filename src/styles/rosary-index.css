@@ -592,7 +592,7 @@
   .intro { padding: 96px var(--gutter, 22px) 72px; }
   .pillars { padding: 0 var(--gutter, 22px) 100px; }
   .pillars .row { grid-template-columns: 1fr; gap: 56px; }
-  .cottages, .reserve-block, .journal, .experiences-home { padding: 96px var(--gutter, 22px); }
+  .cottages, .reserve-block, .journal, .experiences-home, .video-feature { padding: 96px var(--gutter, 22px); }
   .cottages .head, .journal .head, .experiences-home .head { grid-template-columns: 1fr; }
   .cottages .head .right, .journal .head .right, .experiences-home .head .right { text-align: left; }
   .cottage-grid > *, .experience-grid > * { grid-column: 1 / -1 !important; margin-top: 0 !important; }
