@@ -74,7 +74,7 @@ export default async function BookPage({
           <h4 data-reveal="heading">iii. Cancellation, briefly</h4>
           <div className="title" data-reveal="eyebrow">Plain English, <em>no fine print.</em></div>
           <p data-reveal="body">
-            Write to us at <a href="mailto:stay@rosarynest.in">stay@rosarynest.in</a> and we&#39;ll walk
+            Write to us at <a href="mailto:stay@rosarynest.com">stay@rosarynest.com</a> and we&#39;ll walk
             you through booking and cancellation.
           </p>
         </div>

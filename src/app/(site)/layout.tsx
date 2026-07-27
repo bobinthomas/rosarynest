@@ -22,7 +22,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       streetAddress: settings.address_line1,
       addressLocality: "Munnar",
       addressRegion: "Kerala",
-      postalCode: "685612",
+      postalCode: "685565",
       addressCountry: "IN",
     },
     geo: settings.latitude && settings.longitude

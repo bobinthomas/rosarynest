@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 
 // Any host other than the configured production domain (e.g. the
 // *.workers.dev staging deployment) gets a blanket noindex, so a staging
-// build never competes with rosarynest.in in search results.
+// build never competes with rosarynest.com in search results.
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const host = (await headers()).get("host");
   const productionHost = new URL(SITE_URL).host;

@@ -12,7 +12,7 @@ export const settingsSeed: Record<string, string> = {
   established_year: "2010",
   phone: "+91 98477 76136",
   whatsapp: "+91 98477 76136",
-  email: "sibi2john@gmail.com",
+  email: "stay@rosarynest.com",
   address_line1: "223J+GW5, Sengulam-Muthuvankudi Road, Near Little Flower Mercy Home",
   address_line2: "Anachal, Bison Valley, Munnar, Kerala 685565, India",
   latitude: "10.0889",
@@ -404,8 +404,8 @@ export type FaqSeed = { question: string; answer: string; category: string; disp
 
 export const faqsSeed: FaqSeed[] = [
   // Before you book
-  { category: "Before you book", displayOrder: 1, question: "What is your cancellation policy?", answer: "Write to us at stay@rosarynest.in and we'll walk you through booking and cancellation." },
-  { category: "Before you book", displayOrder: 2, question: "How do I pay, and when?", answer: "Write to us at stay@rosarynest.in and we'll walk you through booking and cancellation." },
+  { category: "Before you book", displayOrder: 1, question: "What is your cancellation policy?", answer: "Write to us at stay@rosarynest.com and we'll walk you through booking and cancellation." },
+  { category: "Before you book", displayOrder: 2, question: "How do I pay, and when?", answer: "Write to us at stay@rosarynest.com and we'll walk you through booking and cancellation." },
   { category: "Before you book", displayOrder: 3, question: "Can we bring children?", answer: "Yes, gladly. We don't have a kids' club or a babysitter on staff, and there's a fast-flowing stream below the lower terrace, so toddlers need supervision. Older children (eight and up) tend to love the place." },
   { category: "Before you book", displayOrder: 4, question: "Do you accept pets?", answer: "We don't, mainly because the property has two resident dogs and a half-feral kitchen cat who would rather not share. Service animals are an exception — please tell us in advance." },
   { category: "Before you book", displayOrder: 5, question: "Is the property accessible?", answer: "Some cottages involve steps and uneven paths — tell us about mobility needs when you book and we'll recommend the right one." },
