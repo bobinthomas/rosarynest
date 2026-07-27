@@ -60,8 +60,7 @@ export function renderEnquiryEmail(opts: {
           <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="width:560px;max-width:100%;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid ${RULE};">
             <tr>
               <td align="center" style="padding:28px 24px 20px;background:${CREAM};border-bottom:3px solid ${FOREST};">
-                <img src="${SITE_URL}/images/logo.png" alt="RosaryNest" width="72" style="display:block;width:72px;height:auto;margin:0 auto 10px;" />
-                <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:${FOREST};letter-spacing:0.02em;">RosaryNest</div>
+                <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;color:${FOREST};letter-spacing:0.02em;">RosaryNest</div>
                 <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:${MUTE};text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">where stillness stays</div>
               </td>
             </tr>

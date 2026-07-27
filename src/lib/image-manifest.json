@@ -179,12 +179,6 @@
     "webp": "/images/kitchen-stack-1.webp",
     "srcset": "/images/kitchen-stack-1-480w.webp 480w, /images/kitchen-stack-1-800w.webp 800w, /images/kitchen-stack-1-1200w.webp 1200w, /images/kitchen-stack-1.webp 1448w"
   },
-  "/images/logo.png": {
-    "width": 349,
-    "height": 254,
-    "webp": "/images/logo.webp",
-    "srcset": "/images/logo.webp 349w"
-  },
   "/images/monsoon-rain-munnar.png": {
     "width": 1536,
     "height": 1024,
