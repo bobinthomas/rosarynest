@@ -531,6 +531,34 @@ body.nav-open {
   padding: 0 var(--gutter);
 }
 
+/* Shared centered intro paragraph, used below a page's hero on Experiences,
+   FAQ, and How to Reach — kept as a single rule (rather than one per page)
+   so it can't collide with itself across the stylesheet. */
+.intro-block {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto 96px;
+  padding: 96px var(--gutter);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .intro-block {
+    padding: 64px var(--gutter);
+  }
+}
+
+.intro-block p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
 .eyebrow {
   font-family: var(--sans);
   font-size: 11px;
@@ -575,7 +603,7 @@ body.nav-open {
 /* ============ Responsive base ============ */
 @media (max-width: 1024px) {
   :root {
-    --header-height: 140px;
+    --header-height: 96px;
     --below-header: calc(var(--header-height) + 16px);
   }
   .site-header {
@@ -1105,32 +1133,6 @@ main {
 }
 main {
   padding-top: 92px;
-}
-
-.intro-block {
-  max-width: 640px;
-  margin: 0 auto 120px;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.intro-block p {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-.season {
-  max-width: 1280px;
-  margin: 0 auto 120px;
-  padding: 0 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
 }
 
 .season.right .img-col {
@@ -2579,6 +2581,25 @@ main {
     padding: 22px;
   }
 }
+
+/* Below tablet width, the 2-up mosaic leaves a lone last photo stranded
+   in half a row whenever a cottage/experience has an even-then-odd photo
+   count (e.g. 4 total: g1 full + g2/g3 paired + g4 alone). Stack every
+   photo full-width instead — robust regardless of how many photos exist. */
+@media (max-width: 600px) {
+  .gallery {
+    grid-auto-rows: auto;
+    gap: 22px;
+  }
+  .g1, .g2, .g3, .g4 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .gallery .img {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+}
 main {
   padding-top: 92px;
 }
@@ -3428,26 +3449,6 @@ main {
   min-height: 380px;
 }
 
-/* Intro paragraph */
-.intro-block {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 120px var(--gutter);
-  text-align: center;
-}
-
-.intro-block p {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: 24px;
-  line-height: 1.55;
-  color: var(--ink);
-  margin: 0;
-  text-wrap: balance;
-}
-
 /* Four experiences 2x2 */
 .exp-grid {
   width: 100%;
@@ -3565,9 +3566,6 @@ main {
   .exp-hero .img {
     min-height: 240px;
   }
-  .intro-block {
-    padding: 64px var(--gutter);
-  }
   .exp-grid {
     grid-template-columns: 1fr;
     gap: 56px;
@@ -3579,23 +3577,6 @@ main {
 }
 main {
   padding-top: 92px;
-}
-
-.intro-block {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto 96px;
-  padding: 0 var(--gutter);
-  text-align: center;
-}
-
-.intro-block p {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink);
 }
 
 .faq-section {
@@ -4038,23 +4019,6 @@ main {
 }
 main {
   padding-top: 92px;
-}
-
-.intro-block {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto 96px;
-  padding: 0 var(--gutter);
-  text-align: center;
-}
-
-.intro-block p {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink);
 }
 
 /* Route sections */
@@ -4932,7 +4896,7 @@ main {
 
 @media (max-width: 1024px) {
   .hero .corner {
-    top: var(--below-header, 156px);
+    top: var(--below-header, 112px);
     left: var(--gutter, 22px);
     font-size: 9px;
   }

@@ -583,16 +583,16 @@
 
 @media (max-width: 1024px) {
   :root {
-    --header-height: 140px;
+    --header-height: 96px;
     --below-header: calc(var(--header-height) + 16px);
   }
-  .hero .corner { top: var(--below-header, 156px); left: var(--gutter, 22px); font-size: 9px; }
+  .hero .corner { top: var(--below-header, 112px); left: var(--gutter, 22px); font-size: 9px; }
   .hero .corner-r { right: var(--gutter, 22px); }
   .hero .hero-content { padding: 0 var(--gutter, 22px) 56px; }
   .intro { padding: 96px var(--gutter, 22px) 72px; }
-  .pillars { padding: 0 var(--gutter, 22px) 100px; }
+  .pillars { padding: 0 var(--gutter, 22px) 64px; }
   .pillars .row { grid-template-columns: 1fr; gap: 56px; }
-  .cottages, .reserve-block, .journal, .experiences-home, .video-feature { padding: 96px var(--gutter, 22px); }
+  .cottages, .reserve-block, .journal, .experiences-home, .video-feature { padding: 64px var(--gutter, 22px); }
   .cottages .head, .journal .head, .experiences-home .head { grid-template-columns: 1fr; }
   .cottages .head .right, .journal .head .right, .experiences-home .head .right { text-align: left; }
   .cottage-grid > *, .experience-grid > * { grid-column: 1 / -1 !important; margin-top: 0 !important; }
