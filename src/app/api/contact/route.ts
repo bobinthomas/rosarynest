@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getSettings } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as Record<string, string | undefined>;
@@ -11,8 +12,12 @@ export async function POST(request: NextRequest) {
   }
 
   const settings = await getSettings();
-  const ownerEmail = settings.email || "stay@rosarynest.in";
-  const fromDomain = ownerEmail.split("@")[1] ?? "rosarynest.in";
+  const ownerEmail = settings.email || "stay@rosarynest.com";
+  // The "from" address must be on a domain verified with Resend, which won't
+  // match the recipient's domain if it's a personal inbox (e.g. Gmail) — so
+  // it's always the site's own domain, independent of where the
+  // notification is actually delivered.
+  const fromDomain = new URL(SITE_URL).hostname;
 
   const html = `
     <h2>New enquiry from the website</h2>
@@ -27,16 +32,26 @@ export async function POST(request: NextRequest) {
 
   try {
     const { env } = await getCloudflareContext({ async: true });
-    if (!env.EMAIL) throw new Error("EMAIL binding not available in this environment");
+    const apiKey = env.RESEND_API_KEY;
+    if (!apiKey) throw new Error("RESEND_API_KEY is not set in this environment");
 
-    await env.EMAIL.send({
-      to: ownerEmail,
-      from: { email: `notifications@${fromDomain}`, name: "RosaryNest Website" },
-      replyTo: email,
-      subject: `New enquiry from ${name}`,
-      html,
-      text,
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: ownerEmail,
+        from: `RosaryNest Website <notifications@${fromDomain}>`,
+        reply_to: email,
+        subject: `New enquiry from ${name}`,
+        html,
+        text,
+      }),
     });
+
+    if (!res.ok) throw new Error(`Resend API error: ${res.status} ${await res.text()}`);
 
     return NextResponse.json({ ok: true });
   } catch (error) {

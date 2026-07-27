@@ -4,6 +4,15 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-06-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://rosarynest.com",
+    "NEXT_PUBLIC_BOOKING_ENGINE_URL": "https://bookingengine.stayflexi.com/?hotel_id=36673"
+  },
+  "routes": [
+    { "pattern": "rosarynest.com", "custom_domain": true },
+    { "pattern": "www.rosarynest.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
@@ -24,14 +33,9 @@
       "binding": "MEDIA",
       "bucket_name": "rosarynest-media"
     }
-  ],
-  "send_email": [
-    {
-      "name": "EMAIL"
-      // Requires `wrangler email sending enable rosarynest.in` on the real
-      // account before this can send. Not usable in this local scaffold —
-      // the contact route degrades gracefully (logs + returns an error)
-      // until the domain is onboarded and this is deployed for real.
-    }
   ]
+  // Outbound contact-form email goes through the Resend API (see
+  // src/app/api/contact/route.ts) rather than Cloudflare's own Email
+  // Sending, which requires the Workers Paid plan. RESEND_API_KEY is set via
+  // `wrangler secret put` — not present here or in .env.local's committed form.
 }
