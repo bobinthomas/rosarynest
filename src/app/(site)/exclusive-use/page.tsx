@@ -1,6 +1,7 @@
 import { ExclusiveEnquiryForm } from "@/components/ExclusiveEnquiryForm";
 import { OCCASION_OPTIONS } from "@/lib/exclusive-enquiry";
 import { buildMetadata } from "@/lib/metadata";
+import { getSettings } from "@/lib/content";
 import styles from "@/styles/exclusive-use.module.css";
 
 export const metadata = buildMetadata({
@@ -12,7 +13,9 @@ export const metadata = buildMetadata({
 
 const OCCASION_PILLS = OCCASION_OPTIONS.slice(0, 5);
 
-export default function ExclusiveUsePage() {
+export default async function ExclusiveUsePage() {
+  const settings = await getSettings();
+
   return (
     <>
       <section className="compact-hero">
@@ -56,7 +59,7 @@ export default function ExclusiveUsePage() {
       </div>
 
       <section className={`container-narrow ${styles.enquirySection}`} data-reveal="fade">
-        <ExclusiveEnquiryForm />
+        <ExclusiveEnquiryForm whatsappNumber={settings.whatsapp || settings.phone} />
       </section>
     </>
   );

@@ -8,14 +8,10 @@ import {
 } from "@/lib/exclusive-enquiry";
 import styles from "@/styles/exclusive-use.module.css";
 
-// TODO: replace with RosaryNest's exclusive-use enquiry WhatsApp number —
-// digits only, country code first, no "+" or spaces (e.g. "919876543210").
-const WHATSAPP_NUMBER_PLACEHOLDER = "REPLACE_WITH_WHATSAPP_NUMBER";
-
 type Status = "idle" | "sending" | "sent" | "error";
 type RawFormValues = Record<"arriving" | "nights" | "guests" | "occasion" | "name" | "email" | "phone" | "notes", FormDataEntryValue | null>;
 
-export function ExclusiveEnquiryForm() {
+export function ExclusiveEnquiryForm({ whatsappNumber }: { whatsappNumber?: string }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<ExclusiveEnquiryFieldErrors>({});
@@ -90,6 +86,9 @@ export function ExclusiveEnquiryForm() {
   }
 
   function onWhatsApp() {
+    const digits = (whatsappNumber ?? "").replace(/\D/g, "");
+    if (!digits) return;
+
     const raw = readForm();
     const lines = ["Hi, I'd like to enquire about an exclusive-use stay at RosaryNest."];
 
@@ -109,7 +108,7 @@ export function ExclusiveEnquiryForm() {
 
     const message = lines.join("\n");
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER_PLACEHOLDER}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${digits}?text=${encodeURIComponent(message)}`,
       "_blank",
       "noopener,noreferrer"
     );
