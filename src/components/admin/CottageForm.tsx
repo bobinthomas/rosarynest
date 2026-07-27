@@ -14,6 +14,7 @@ type Cottage = {
   description: string;
   capacitySummary: string | null;
   areaSqm: number | null;
+  nightlyRate: number | null;
   amenities: string[];
   images: string[];
   videoYoutubeUrl: string | null;
@@ -48,6 +49,7 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
       description: form.get("description"),
       capacitySummary: form.get("capacitySummary"),
       areaSqm: Number(form.get("areaSqm")) || null,
+      nightlyRate: Number(form.get("nightlyRate")) || null,
       amenities: String(form.get("amenities") ?? "").split("\n").map((s) => s.trim()).filter(Boolean),
       images: String(form.get("images") ?? "").split("\n").map((s) => s.trim()).filter(Boolean),
       videoYoutubeUrl: videoYoutubeUrl || null,
@@ -92,7 +94,7 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
         <label htmlFor="description">Description</label>
         <textarea id="description" name="description" defaultValue={cottage?.description} required style={{ minHeight: 160 }} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 16 }}>
         <div>
           <label htmlFor="capacitySummary">Capacity summary</label>
           <input id="capacitySummary" name="capacitySummary" defaultValue={cottage?.capacitySummary ?? ""} />
@@ -100,6 +102,10 @@ export function CottageForm({ cottage }: { cottage?: Cottage }) {
         <div>
           <label htmlFor="areaSqm">Area (m²)</label>
           <input id="areaSqm" name="areaSqm" type="number" defaultValue={cottage?.areaSqm ?? ""} />
+        </div>
+        <div>
+          <label htmlFor="nightlyRate">Nightly rate (₹, leave blank to hide)</label>
+          <input id="nightlyRate" name="nightlyRate" type="number" min="0" defaultValue={cottage?.nightlyRate ?? ""} />
         </div>
         <div>
           <label htmlFor="displayOrder">Display order</label>

@@ -37,6 +37,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       description: body.description,
       capacitySummary: body.capacitySummary ?? null,
       areaSqm: body.areaSqm ?? null,
+      nightlyRate: body.nightlyRate ?? null,
       amenities: body.amenities ?? [],
       images: body.images ?? [],
       videoYoutubeUrl: body.videoYoutubeUrl || null,
