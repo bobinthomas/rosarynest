@@ -3,6 +3,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { validateExclusiveEnquiry } from "@/lib/exclusive-enquiry";
 import { getSettings } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
+import { renderEnquiryEmail } from "@/lib/email-template";
 
 export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
@@ -22,19 +23,21 @@ export async function POST(request: NextRequest) {
   const ownerEmail = settings.email || "stay@rosarynest.com";
   const fromDomain = new URL(SITE_URL).hostname;
 
-  const html = `
-    <h2>New exclusive-use enquiry</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email || "—")}</p>
-    <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-    <p><strong>Arriving:</strong> ${escapeHtml(arriving)}</p>
-    <p><strong>Nights:</strong> ${nights}</p>
-    <p><strong>Guests:</strong> ${guests}</p>
-    <p><strong>Occasion:</strong> ${escapeHtml(occasion || "—")}</p>
-    <p><strong>Notes:</strong></p>
-    <p>${escapeHtml(notes || "—").replace(/\n/g, "<br />")}</p>
-  `;
-  const text = `New exclusive-use enquiry\n\nName: ${name}\nEmail: ${email || "—"}\nPhone: ${phone}\nArriving: ${arriving}\nNights: ${nights}\nGuests: ${guests}\nOccasion: ${occasion || "—"}\n\nNotes:\n${notes || "—"}`;
+  const { html, text } = renderEnquiryEmail({
+    heading: "New exclusive-use enquiry",
+    intro: `${name} asked about taking over the whole property.`,
+    rows: [
+      { label: "Name", value: name },
+      { label: "Email", value: email || "" },
+      { label: "Phone", value: phone },
+      { label: "Arriving", value: arriving },
+      { label: "Nights", value: String(nights) },
+      { label: "Guests", value: String(guests) },
+      { label: "Occasion", value: occasion || "" },
+    ],
+    notesLabel: "Anything we should know",
+    notes: notes || "",
+  });
 
   try {
     const { env } = await getCloudflareContext({ async: true });
@@ -67,12 +70,4 @@ export async function POST(request: NextRequest) {
       { status: 502 }
     );
   }
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }

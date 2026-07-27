@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getSettings } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
+import { renderEnquiryEmail } from "@/lib/email-template";
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as Record<string, string | undefined>;
@@ -19,16 +20,18 @@ export async function POST(request: NextRequest) {
   // notification is actually delivered.
   const fromDomain = new URL(SITE_URL).hostname;
 
-  const html = `
-    <h2>New enquiry from the website</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Phone:</strong> ${escapeHtml(phone || "—")}</p>
-    <p><strong>Topic:</strong> ${escapeHtml(topic || "—")}</p>
-    <p><strong>Message:</strong></p>
-    <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
-  `;
-  const text = `New enquiry from the website\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\nTopic: ${topic || "—"}\n\nMessage:\n${message}`;
+  const { html, text } = renderEnquiryEmail({
+    heading: "New enquiry from the website",
+    intro: `${name} sent a message through the contact form.`,
+    rows: [
+      { label: "Name", value: name },
+      { label: "Email", value: email },
+      { label: "Phone", value: phone || "" },
+      { label: "Topic", value: topic || "" },
+    ],
+    notesLabel: "Message",
+    notes: message,
+  });
 
   try {
     const { env } = await getCloudflareContext({ async: true });
@@ -61,12 +64,4 @@ export async function POST(request: NextRequest) {
       { status: 502 }
     );
   }
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
