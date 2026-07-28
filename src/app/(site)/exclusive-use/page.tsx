@@ -47,7 +47,7 @@ export default async function ExclusiveUsePage() {
         <div className="card" style={{ "--reveal-i": 2 } as React.CSSProperties} data-reveal="fade">
           <div className="num">03</div>
           <h3>Run it your way</h3>
-          <p className="blurb">[CONFIRM: kitchen access and outside catering policy]</p>
+          <p className="blurb">Full kitchen access included — bring your own caterer, cook, or plans, no restrictions.</p>
         </div>
       </div>
 

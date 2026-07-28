@@ -404,7 +404,7 @@ export type FaqSeed = { question: string; answer: string; category: string; disp
 
 export const faqsSeed: FaqSeed[] = [
   // Before you book
-  { category: "Before you book", displayOrder: 1, question: "What is your cancellation policy?", answer: "Write to us at stay@rosarynest.com and we'll walk you through booking and cancellation." },
+  { category: "Before you book", displayOrder: 1, question: "What is your cancellation policy?", answer: "We don't offer refunds once a booking is confirmed. That said, life happens — write to us if something comes up and we'll work it out with you case by case." },
   { category: "Before you book", displayOrder: 2, question: "How do I pay, and when?", answer: "Write to us at stay@rosarynest.com and we'll walk you through booking and cancellation." },
   { category: "Before you book", displayOrder: 3, question: "Can we bring children?", answer: "Yes, gladly. We don't have a kids' club or a babysitter on staff, and there's a fast-flowing stream below the lower terrace, so toddlers need supervision. Older children (eight and up) tend to love the place." },
   { category: "Before you book", displayOrder: 4, question: "Do you accept pets?", answer: "We don't, mainly because the property has two resident dogs and a half-feral kitchen cat who would rather not share. Service animals are an exception — please tell us in advance." },
