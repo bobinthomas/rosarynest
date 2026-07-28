@@ -76,15 +76,17 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="social-row">
-        <div className="label">Elsewhere</div>
-        <div className="links">
-          <a href={settings.instagram_url || "#"}>Instagram</a>
-          <a href={settings.facebook_url || "#"}>Facebook</a>
-          <a href={settings.youtube_url || "#"}>YouTube</a>
-          <a href={settings.tripadvisor_url || "#"}>TripAdvisor</a>
-        </div>
-      </section>
+      {(settings.instagram_url || settings.facebook_url || settings.youtube_url || settings.tripadvisor_url) ? (
+        <section className="social-row">
+          <div className="label">Elsewhere</div>
+          <div className="links">
+            {settings.instagram_url ? <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer">Instagram</a> : null}
+            {settings.facebook_url ? <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer">Facebook</a> : null}
+            {settings.youtube_url ? <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer">YouTube</a> : null}
+            {settings.tripadvisor_url ? <a href={settings.tripadvisor_url} target="_blank" rel="noopener noreferrer">TripAdvisor</a> : null}
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
