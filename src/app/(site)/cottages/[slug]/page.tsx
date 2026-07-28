@@ -91,7 +91,12 @@ export default async function CottageDetailPage({
       {accommodation ? <StructuredData data={accommodation} /> : null}
       <section className="cottage-hero">
         <div className="img" data-reveal="image">
-          <SiteImage src={cottage.images[0]} alt={getAltText(cottage.images[0], cottage.name)} priority />
+          <SiteImage
+            src={cottage.images[0]}
+            alt={getAltText(cottage.images[0], cottage.name)}
+            priority
+            sizes="(max-width: 1024px) calc(100vw - 44px), min(calc(100vw - 112px), 1168px)"
+          />
         </div>
         <div className="meta-row">
           <div>
