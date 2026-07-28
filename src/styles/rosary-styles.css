@@ -14,9 +14,9 @@
   --mute: #8a8578;
   --rule: #d8d2c4;
   --copper: #A8674A;
-  --serif: Cormorant Garamond, EB Garamond, Georgia, serif;
-  --sans: Google Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-  --mono: JetBrains Mono, ui-monospace, Menlo, monospace;
+  --serif: var(--font-cormorant-garamond), EB Garamond, Georgia, serif;
+  --sans: var(--font-google-sans), Helvetica Neue, Helvetica, Arial, sans-serif;
+  --mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
   --gutter: clamp(22px, 4vw, 56px);
   --touch-min: 44px;
   --header-height: 92px;

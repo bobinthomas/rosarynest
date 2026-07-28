@@ -1,7 +1,32 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Google_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/metadata";
+
+// Self-hosted via next/font (replaces the fonts.googleapis.com <link>, which
+// was a render-blocking cross-origin request). Weights/styles match what
+// was requested before — see the comment above the old <link> tag in git
+// history for why these specific ones were chosen.
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant-garamond",
+});
+const googleSans = Google_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-google-sans",
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
 
 // Every page reads from D1 at request time — nothing here is safe to
 // prerender against the build-time D1 emulation (and it should reflect
@@ -24,22 +49,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Trimmed to weights actually used in the CSS (verified via grep):
-            no font-weight:600 exists anywhere, and every italic <em> rule
-            explicitly resets to weight 300, so 400/500 italic were never
-            rendered. This is the same set of glyphs, just fewer font files.
-            Google Sans replaces Inter for --sans — it only ships weights
-            400/500/600/700, so any font-weight:300 in the CSS renders at 400
-            (no lighter face exists). --mono stays on JetBrains Mono. */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Google+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
-        />
-      </head>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${cormorantGaramond.variable} ${googleSans.variable} ${jetbrainsMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
