@@ -1,6 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { getFaqs, getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { telHref } from "@/lib/phone";
 
 export const metadata = buildMetadata({
   title: "FAQ — RosaryNest",
@@ -74,7 +75,7 @@ export default async function FaqPage() {
           </div>
           <div>
             <label>Phone</label>
-            <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+            <a href={telHref(settings.phone)}>{settings.phone}</a>
           </div>
         </div>
         <p className="footnote" data-reveal="fade">We answer everything personally, usually within a day.</p>

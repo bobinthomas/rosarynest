@@ -5,6 +5,7 @@ import { SiteImage } from "@/components/SiteImage";
 import { YouTubeFacade } from "@/components/YouTubeFacade";
 import { getAltText } from "@/lib/image-alt";
 import { extractYouTubeId } from "@/lib/youtube";
+import { telHref } from "@/lib/phone";
 
 export default async function Home() {
   const [cottages, experiences, latestPosts, settings] = await Promise.all([
@@ -265,7 +266,7 @@ export default async function Home() {
             </a>
 
             <div className="aside">
-              or call us at <a href={`tel:${settings.phone}`}>{settings.phone}</a> — we answer personally.
+              or call us at <a href={telHref(settings.phone)}>{settings.phone}</a> — we answer personally.
             </div>
           </div>
         </div>

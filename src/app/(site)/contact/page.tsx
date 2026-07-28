@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { telHref } from "@/lib/phone";
 
 export const metadata = buildMetadata({
   title: "Contact — RosaryNest",
@@ -31,7 +32,7 @@ export default async function ContactPage() {
           </div>
           <div className="channel">
             <label>Phone</label>
-            <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+            <a href={telHref(settings.phone)}>{settings.phone}</a>
           </div>
           <div className="channel">
             <label>WhatsApp</label>

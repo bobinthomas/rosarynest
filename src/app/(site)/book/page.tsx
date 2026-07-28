@@ -1,5 +1,6 @@
 import { getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { telHref } from "@/lib/phone";
 
 export const metadata = buildMetadata({
   title: "Reserve — RosaryNest",
@@ -67,7 +68,7 @@ export default async function BookPage({
             Some bookings — group stays, special dates, dietary or accessibility needs — work better
             as a conversation. We&#39;re around.
           </p>
-          <p className="channel"><a href={`tel:${settings.phone}`}>{settings.phone}</a></p>
+          <p className="channel"><a href={telHref(settings.phone)}>{settings.phone}</a></p>
           <p className="channel"><a href={`mailto:${settings.email}`}>{settings.email}</a></p>
         </div>
         <div className="sup-col" style={{ "--reveal-i": 2 } as React.CSSProperties}>

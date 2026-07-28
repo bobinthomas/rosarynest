@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getSettings } from "@/lib/content";
 import { SiteImage } from "@/components/SiteImage";
 import { FacebookIcon, InstagramIcon, TripAdvisorIcon, YouTubeIcon } from "@/components/SocialIcons";
+import { telHref } from "@/lib/phone";
 
 const socialLinks = [
   { key: "instagram_url", label: "Instagram", Icon: InstagramIcon },
@@ -58,7 +59,7 @@ export async function Footer() {
           <h3>Contact</h3>
           <ul>
             <li>{settings.address_line1}, {settings.address_line2}</li>
-            <li><a href={`tel:${settings.phone}`}>{settings.phone}</a></li>
+            <li><a href={telHref(settings.phone)}>{settings.phone}</a></li>
             <li><a href={`mailto:${settings.email}`}>{settings.email}</a></li>
             <li><Link href="/contact">Write to us →</Link></li>
           </ul>
