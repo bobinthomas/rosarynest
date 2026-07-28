@@ -44,7 +44,7 @@ export const cottagesSeed: CottageSeed[] = [
     name: "Den View Cottage",
     tagline: "Mornings begin in the garden.",
     description:
-      "Den View Cottage at Rosary Nest is a cozy and well-appointed accommodation designed to offer guests a peaceful stay amidst the scenic beauty of Munnar. Set within the tranquil surroundings of the property, the cottage provides a warm and comfortable ambiance, making it an ideal choice for those looking to unwind in nature. With its charming setting and close proximity to lush greenery and misty hills, Den View Cottage ensures a relaxing retreat while still allowing easy access to nearby attractions.",
+      "Named for the wooded den just below its windows, this is the cottage where mornings start early — you'll hear the garden before you see it. One room, quietly furnished, with a private veranda that catches the first light over the property. There's barbecue space right outside, if you'd rather cook than walk down to the main house.",
     capacitySummary: "1 room, 6 guests maximum",
     areaSqm: null,
     amenities: [
@@ -85,7 +85,7 @@ export const cottagesSeed: CottageSeed[] = [
     name: "Tarry Cottage",
     tagline: "Wake up to peaceful views and lush greenery.",
     description:
-      "Tarry Cottage at Rosary Nest offers a comfortable and tranquil stay amidst the picturesque landscapes of Munnar. Thoughtfully designed to blend with the natural surroundings, the cottage provides a cozy and inviting atmosphere for guests seeking relaxation and privacy. Surrounded by lush greenery and serene views, it serves as an ideal retreat for nature lovers while still being conveniently accessible.",
+      "The only cottage on the property with air conditioning, and the one guests tell us they get the least done in — in the best way. A wide veranda looks straight out over the garden, and it's the cottage we point reading-minded guests toward, since something about the light here makes an afternoon disappear. One room, comfortably fitted for up to six.",
     capacitySummary: "1 room, 6 guests maximum",
     areaSqm: null,
     amenities: [
@@ -125,7 +125,7 @@ export const cottagesSeed: CottageSeed[] = [
     name: "Sparrow Hut",
     tagline: "Made for togetherness, wrapped in quiet comfort.",
     description:
-      "Sparrow Hut at Rosary Nest is a charming and cozy accommodation designed for guests who wish to experience a peaceful stay close to nature. Set amidst the serene greenery of Munnar, the hut offers a warm and rustic ambiance while ensuring comfort and privacy. Its tranquil surroundings and scenic views make it an ideal choice for those looking to unwind and enjoy a quiet retreat.",
+      "The smallest and quietest of the four, set apart from the others in its own fold of greenery. Built for two or three who want the property at its most private — no shared walls, no passing traffic, just whatever's nesting in the roof for company. It's a short walk from the bamboo café, close enough if you want company without leaving your own corner of the grounds.",
     capacitySummary: "1 room, 3 guests maximum",
     areaSqm: null,
     amenities: [
@@ -166,7 +166,7 @@ export const cottagesSeed: CottageSeed[] = [
     name: "Eyrie Cottage",
     tagline: "A stay that feels hidden away from the world.",
     description:
-      "Eyrie Cottage at Rosary Nest offers a peaceful and comfortable stay set amidst the scenic hills of Munnar. Designed to provide a relaxing retreat, the cottage features a cozy ambiance complemented by the natural beauty surrounding the property. With its serene setting, fresh mountain air, and picturesque views, Eyrie Cottage is ideal for guests seeking a quiet escape while still being conveniently accessible.",
+      "Set highest on the property, with the view the name promises — an eyrie is where a hawk builds its nest, above everything else, and this cottage sits the same way. It has the best seat on the property for a sunset over the valley. A quiet path climbs up past the garden to reach it, so even the walk in is part of the stay.",
     capacitySummary: "1 room, 3 guests maximum",
     areaSqm: null,
     amenities: [
@@ -405,7 +405,7 @@ export type FaqSeed = { question: string; answer: string; category: string; disp
 export const faqsSeed: FaqSeed[] = [
   // Before you book
   { category: "Before you book", displayOrder: 1, question: "What is your cancellation policy?", answer: "We don't offer refunds once a booking is confirmed. That said, life happens — write to us if something comes up and we'll work it out with you case by case." },
-  { category: "Before you book", displayOrder: 2, question: "How do I pay, and when?", answer: "Write to us at stay@rosarynest.com and we'll walk you through booking and cancellation." },
+  { category: "Before you book", displayOrder: 2, question: "How do I pay, and when?", answer: "Payment is handled securely through our booking system when you reserve — no need to email details back and forth. If you would rather book by phone or WhatsApp, write to us and we will send a payment link." },
   { category: "Before you book", displayOrder: 3, question: "Can we bring children?", answer: "Yes, gladly. We don't have a kids' club or a babysitter on staff, and there's a fast-flowing stream below the lower terrace, so toddlers need supervision. Older children (eight and up) tend to love the place." },
   { category: "Before you book", displayOrder: 4, question: "Do you accept pets?", answer: "We don't, mainly because the property has two resident dogs and a half-feral kitchen cat who would rather not share. Service animals are an exception — please tell us in advance." },
   { category: "Before you book", displayOrder: 5, question: "Is the property accessible?", answer: "Some cottages involve steps and uneven paths — tell us about mobility needs when you book and we'll recommend the right one." },
