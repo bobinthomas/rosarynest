@@ -8,6 +8,8 @@ import { SITE_URL } from "@/lib/site";
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSettings();
 
+  const sameAs = [settings.facebook_url, settings.youtube_url, settings.instagram_url, settings.tripadvisor_url].filter(Boolean);
+
   const lodgingBusiness = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
@@ -17,9 +19,10 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     telephone: settings.phone,
     email: settings.email,
     image: `${SITE_URL}/images/red-cottage-front-view.webp`,
+    priceRange: "₹3,000–₹4,000",
     address: {
       "@type": "PostalAddress",
-      streetAddress: settings.address_line1,
+      streetAddress: `${settings.address_line1}, Anachal, Bison Valley`,
       addressLocality: "Munnar",
       addressRegion: "Kerala",
       postalCode: "685565",
@@ -28,10 +31,11 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     geo: settings.latitude && settings.longitude
       ? {
           "@type": "GeoCoordinates",
-          latitude: settings.latitude,
-          longitude: settings.longitude,
+          latitude: Number(settings.latitude),
+          longitude: Number(settings.longitude),
         }
       : undefined,
+    sameAs: sameAs.length ? sameAs : undefined,
   };
 
   return (

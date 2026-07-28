@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { SiteImage } from "@/components/SiteImage";
+import { StructuredData } from "@/components/StructuredData";
 import { getPosts } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Journal — RosaryNest",
@@ -9,6 +11,15 @@ export const metadata = buildMetadata({
     "Slow writing about Munnar, the family, and the land at RosaryNest — for guests who'd like to know more before they come.",
   path: "/journal",
 });
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Journal", item: `${SITE_URL}/journal` },
+  ],
+};
 
 const positions = ["p-a", "p-b", "p-c", "p-d", "p-e"];
 
@@ -24,6 +35,7 @@ export default async function JournalPage() {
 
   return (
     <>
+      <StructuredData data={breadcrumb} />
       <section className="compact-hero">
         <div className="kicker" data-reveal="eyebrow">Journal</div>
         <h1 data-reveal="heading">Notes <em>from the hill.</em></h1>

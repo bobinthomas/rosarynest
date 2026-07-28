@@ -1,7 +1,9 @@
 import { PageHero } from "@/components/PageHero";
 import { GalleryGrid } from "@/components/GalleryGrid";
+import { StructuredData } from "@/components/StructuredData";
 import { getGalleryItems } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Gallery — RosaryNest",
@@ -13,8 +15,24 @@ export const metadata = buildMetadata({
 export default async function GalleryPage() {
   const items = await getGalleryItems();
 
+  const galleryImages = items.map((item) => ({
+    "@type": "ImageObject",
+    contentUrl: `${SITE_URL}${item.imageUrl}`,
+    name: item.caption,
+    caption: item.caption,
+  }));
+
+  const collectionPage = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Gallery — RosaryNest",
+    url: `${SITE_URL}/gallery`,
+    mainEntity: { "@type": "ImageGallery", image: galleryImages },
+  };
+
   return (
     <>
+      <StructuredData data={collectionPage} />
       <PageHero
         kicker="Gallery"
         title="A walk through RosaryNest,"

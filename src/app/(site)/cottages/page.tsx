@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SiteImage } from "@/components/SiteImage";
+import { StructuredData } from "@/components/StructuredData";
 import { getCottages } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 import { getAltText } from "@/lib/image-alt";
 
 export const metadata = buildMetadata({
@@ -12,11 +14,21 @@ export const metadata = buildMetadata({
   path: "/cottages",
 });
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Cottages", item: `${SITE_URL}/cottages` },
+  ],
+};
+
 export default async function CottagesPage() {
   const cottages = await getCottages();
 
   return (
     <>
+      <StructuredData data={breadcrumb} />
       <PageHero
         kicker="Cottages"
         title="Four cottages,"

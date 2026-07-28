@@ -1,3 +1,4 @@
+import { StructuredData } from "@/components/StructuredData";
 import { getFaqs, getSettings } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -19,8 +20,19 @@ export default async function FaqPage() {
     groups.get(faq.category)!.push(faq);
   }
 
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
   return (
     <>
+      <StructuredData data={faqPage} />
       <section className="compact-hero">
         <div className="kicker" data-reveal="eyebrow">Frequently Asked</div>
         <h1 data-reveal="heading">Questions <em>guests ask us.</em></h1>
@@ -43,7 +55,9 @@ export default async function FaqPage() {
             </div>
             {items.map((faq, fi) => (
               <details className="q" key={faq.id} data-reveal="fade" style={{ "--reveal-i": Math.min(fi, 4) } as React.CSSProperties}>
-                <summary>{faq.question}</summary>
+                <summary>
+                  <h3 style={{ display: "contents" }}>{faq.question}</h3>
+                </summary>
                 <div className="answer">{faq.answer}</div>
               </details>
             ))}

@@ -58,9 +58,37 @@ export default async function CottageDetailPage({
     ],
   };
 
+  const accommodation = cottage.nightlyRate
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Accommodation",
+        name: cottage.name,
+        url: `${SITE_URL}/cottages/${cottage.slug}`,
+        description: cottage.description,
+        image: cottage.images.map((img) => `${SITE_URL}${img}`),
+        occupancy: cottage.capacitySummary ? { "@type": "QuantitativeValue", unitText: cottage.capacitySummary } : undefined,
+        amenityFeature: cottage.amenities.map((a) => ({ "@type": "LocationFeatureSpecification", name: a, value: true })),
+        isPartOf: { "@type": "LodgingBusiness", name: "RosaryNest", url: SITE_URL },
+        offers: {
+          "@type": "Offer",
+          url: bookingUrl,
+          priceCurrency: "INR",
+          price: String(cottage.nightlyRate),
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: String(cottage.nightlyRate),
+            priceCurrency: "INR",
+            unitCode: "DAY",
+          },
+          availability: "https://schema.org/InStock",
+        },
+      }
+    : null;
+
   return (
     <>
       <StructuredData data={breadcrumb} />
+      {accommodation ? <StructuredData data={accommodation} /> : null}
       <section className="cottage-hero">
         <div className="img" data-reveal="image">
           <SiteImage src={cottage.images[0]} alt={getAltText(cottage.images[0], cottage.name)} priority />

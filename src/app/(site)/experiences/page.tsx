@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { SiteImage } from "@/components/SiteImage";
+import { StructuredData } from "@/components/StructuredData";
 import { getExperiences } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 import { getAltText } from "@/lib/image-alt";
 
 export const metadata = buildMetadata({
@@ -11,11 +13,21 @@ export const metadata = buildMetadata({
   path: "/experiences",
 });
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Experiences", item: `${SITE_URL}/experiences` },
+  ],
+};
+
 export default async function ExperiencesPage() {
   const experiences = await getExperiences();
 
   return (
     <>
+      <StructuredData data={breadcrumb} />
       <section className="exp-hero">
         <div className="text">
           <div className="kicker" data-reveal="eyebrow">Experiences</div>
