@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SiteImage } from "@/components/SiteImage";
 import { Lightbox } from "@/components/Lightbox";
+import { getGalleryAltText } from "@/lib/image-alt";
 
 const gridPositions = ["g1", "g2", "g3", "g4"];
 
@@ -36,14 +37,14 @@ export function DetailGallery({ images, title }: { images: string[]; title: stri
                 if (e.key === "Enter" || e.key === " ") setOpenIndex(i);
               }}
             >
-              <SiteImage src={img} alt={`${title} — view ${i + 2}`} sizes="(max-width: 1024px) 100vw, 50vw" />
+              <SiteImage src={img} alt={getGalleryAltText(img, title, i + 2)} sizes="(max-width: 1024px) 100vw, 50vw" />
             </div>
           </div>
         ))}
       </div>
 
       <Lightbox
-        images={thumbs.map((img, i) => ({ src: img, alt: `${title} — view ${i + 2}` }))}
+        images={thumbs.map((img, i) => ({ src: img, alt: getGalleryAltText(img, title, i + 2) }))}
         index={openIndex}
         onClose={() => setOpenIndex(null)}
         onNavigate={setOpenIndex}

@@ -42,11 +42,12 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <>
       <StructuredData data={lodgingBusiness} />
       <ScrollReveal />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Header
         logoUrl={settings.logo_url || "/images/RosaryNest-animated1.svg"}
         bookingUrl={settings.booking_url || "/book"}
       />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
     </>
   );
