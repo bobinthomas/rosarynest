@@ -424,7 +424,7 @@ export const faqsSeed: FaqSeed[] = [
   { category: "Things to do", displayOrder: 2, question: "Do you work with the surrounding tea estates?", answer: "Yes — three of them. We can arrange a tea-pluck-and-taste morning, lunch in a planter's bungalow, or a guided walk through the higher slopes. All small, all by appointment." },
   { category: "Things to do", displayOrder: 3, question: "Can you arrange a driver for the day?", answer: "Yes, our driver brings most guests up from Cochin and knows where to stop and where not to — we can arrange this, ask us when you book." },
   // The cottages
-  { category: "The cottages", displayOrder: 1, question: "Which cottage should I pick?", answer: "Quietest is Sparrow Hut. Most reading-friendly is Tarry Cottage. Best for valley sunsets is Eyrie Cottage. Write to us and we'll help you find the right fit, including for Scarlet Hut." },
+  { category: "The cottages", displayOrder: 1, question: "Which cottage should I pick?", answer: "Quietest is Sparrow Hut. Most reading-friendly is Tarry Cottage. Best for valley sunsets is Eyrie Cottage. Write to us and we'll help you find the right fit." },
   { category: "The cottages", displayOrder: 2, question: "Is there room service?", answer: "Tea and breakfast can come to your veranda. Lunch and dinner are at the long table, weather permitting, or in the dining room when it isn't. We'll bring dinner to the cottage if you ask." },
   { category: "The cottages", displayOrder: 3, question: "Can we have extra bedding?", answer: "Always. Wool blankets, cotton throws, hot-water bottles in January. Just ask, or pull what you need from the linen cupboard in your cottage." },
 ];
@@ -443,7 +443,7 @@ export const galleryItemsSeed: GalleryItemSeed[] = [
   { category: "cottages", displayOrder: 9, imageUrl: "/images/bedroom-view-3.jpg", caption: "Inside Sparrow Hut at noon." },
   { category: "seasons", displayOrder: 10, imageUrl: "/images/tea-plantation.png", caption: "Tea slope below the property." },
   { category: "food", displayOrder: 11, imageUrl: "/images/nest-breakfast.png", caption: "Breakfast on the veranda." },
-  { category: "cottages", displayOrder: 12, imageUrl: "/images/hut-main-view-1.jpg", caption: "Scarlet Hut, exterior view." },
+  { category: "cottages", displayOrder: 12, imageUrl: "/images/hut-main-view-1.jpg", caption: "Sparrow Hut, exterior view." },
   { category: "land", displayOrder: 13, imageUrl: "/images/garden-view-1.jpg", caption: "The garden, early morning." },
   { category: "seasons", displayOrder: 14, imageUrl: "/images/bonfire-rosary-nest.png", caption: "Bonfire, cold-season evening." },
   { category: "cottages", displayOrder: 15, imageUrl: "/images/red-cottage-front-view.png", caption: "Tarry Cottage, front view." },

@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       { source: "/the-family", destination: "/about", permanent: true },
       { source: "/cottages/the-garden-cottage", destination: "/cottages/tarry-cottage", permanent: true },
       { source: "/cottages/the-lake-cottage", destination: "/cottages/sparrow-hut", permanent: true },
-      { source: "/cottages/the-family-cottage", destination: "/cottages/scarlet-hut", permanent: true },
+      { source: "/cottages/the-family-cottage", destination: "/cottages/sparrow-hut", permanent: true },
       { source: "/cottages/cottage-1", destination: "/cottages/eyrie-cottage", permanent: true },
     ];
   },
