@@ -13,6 +13,7 @@ const staticPaths = [
   "about",
   "cottages",
   "experiences",
+  "exclusive-use",
   "journal",
   "plan-your-stay",
   "plan-your-stay/how-to-reach",
